@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>UTOMO Bank - Branch Map</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #ECEEF1;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #mapCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #mapCanvas:active {
+      cursor: grabbing;
+    }
+
+    /* Markers Overlay Layer */
+    #markersLayer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .map-pin {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      pointer-events: auto;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 10;
+    }
+    .map-pin:active, .map-pin.active {
+      transform: translate(-50%, -115%) scale(1.22);
+      z-index: 50;
+    }
+
+    .pin-shadow {
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 6px;
+      background: rgba(15, 23, 42, 0.25);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .pin-svg {
+      width: 32px;
+      height: 42px;
+      filter: drop-shadow(0 3px 5px rgba(49, 46, 129, 0.35));
+    }
+
+    .pin-label {
+      position: absolute;
+      top: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #1E293B;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      pointer-events: none;
+    }
+
+    /* User Location Arrow */
+    .user-arrow-marker {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 20;
+    }
+    .user-arrow-svg {
+      width: 24px;
+      height: 24px;
+      filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.45));
+    }
+
+    /* Floating Popup Card */
+    #popupCard {
+      position: absolute;
+      display: none;
+      background: #FFFFFF;
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.22), 0 6px 12px -2px rgba(15, 23, 42, 0.1);
+      width: 240px;
+      z-index: 100;
+      transform: translate(-50%, -125%);
+      pointer-events: auto;
+      border: 1px solid #E2E8F0;
+      animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: translate(-50%, -110%) scale(0.9); }
+      to { opacity: 1; transform: translate(-50%, -125%) scale(1); }
+    }
+    #popupCard::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px 8px 0;
+      border-style: solid;
+      border-color: #FFFFFF transparent;
+      display: block;
+      width: 0;
+    }
+    .popup-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+    .badge-kc { background: #EEF2FF; color: #4338CA; }
+    .badge-kcp { background: #F5F3FF; color: #7C3AED; }
+    .badge-atm { background: #ECFDF5; color: #047857; }
+
+    .popup-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+    .popup-address {
+      font-size: 11px;
+      color: #64748B;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .popup-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #2563EB;
+      font-weight: 600;
+      padding-top: 6px;
+      border-top: 1px solid #F1F5F9;
+      margin-bottom: 8px;
+    }
+    .popup-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #2563EB;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 0;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .popup-btn:active {
+      background: #1D4ED8;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="mapCanvas"></canvas>
+  <div id="markersLayer"></div>
+
+  <!-- Popup Card Template -->
+  <div id="popupCard">
+    <span class="popup-badge badge-kc" id="popupBadge">KC</span>
+    <div class="popup-title" id="popupTitle">KC Sudirman Utama</div>
+    <div class="popup-address" id="popupAddress">Jl. Jend. Sudirman Kav 21, Jakarta</div>
+    <div class="popup-meta">
+      <span id="popupHours">08:00 - 15:30</span>
+      <span id="popupDistance">0.8 km</span>
+    </div>
+    <button class="popup-btn" id="btnSelectFromPopup">Pilih Cabang Ini</button>
+  </div>
+
+  <script>
+    // Map State
+    const canvas = document.getElementById('mapCanvas');
+    const ctx = canvas.getContext('2d');
+    const markersLayer = document.getElementById('markersLayer');
+    const popupCard = document.getElementById('popupCard');
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    // Viewport pan & zoom
+    let offsetX = width / 2;
+    let offsetY = height * 0.35;
+    let scale = 1.0;
+
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let initialOffsetX = 0;
+    let initialOffsetY = 0;
+
+    let branches = [];
+    let selectedBranchId = null;
+    let activePopupBranch = null;
+
+    // Center Coordinate Origin (Sudirman Center: -6.2146, 106.8217)
+    const CENTER_LAT = -6.2146;
+    const CENTER_LNG = 106.8217;
+    const LAT_SCALE = 18000;
+    const LNG_SCALE = 18000;
+
+    // User Location Offset
+    const userPos = { lat: -6.2185, lng: 106.8160 };
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+      render();
+    }
+
+    // Convert Geo Lat/Lng to Canvas Pixels
+    function latLngToScreen(lat, lng) {
+      const dx = (lng - CENTER_LNG) * LNG_SCALE * scale;
+      const dy = -(lat - CENTER_LAT) * LAT_SCALE * scale;
+      return {
+        x: offsetX + dx,
+        y: offsetY + dy
+      };
+    }
+
+    function screenToLatLng(x, y) {
+      const dx = (x - offsetX) / (LNG_SCALE * scale);
+      const dy = -(y - offsetY) / (LAT_SCALE * scale);
+      return {
+        lat: CENTER_LAT + dy,
+        lng: CENTER_LNG + dx
+      };
+    }
+
+    // High-Fidelity Minimalist Map Renderer (Matching Figma Image 2)
+    function renderMap() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Base Land Background (Figma Silver Grey)
+      ctx.fillStyle = '#ECEEF1';
+      ctx.fillRect(0, 0, width, height);
+
+      // Nature / Wetland Patches (Soft light-green / gray)
+      ctx.fillStyle = '#E3E7ED';
+      ctx.beginPath();
+      // Meadowlands polygon
+      ctx.moveTo(offsetX - 280 * scale, offsetY - 350 * scale);
+      ctx.lineTo(offsetX - 60 * scale, offsetY - 320 * scale);
+      ctx.lineTo(offsetX - 40 * scale, offsetY - 180 * scale);
+      ctx.lineTo(offsetX - 220 * scale, offsetY - 160 * scale);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(offsetX + 120 * scale, offsetY - 260 * scale);
+      ctx.lineTo(offsetX + 340 * scale, offsetY - 220 * scale);
+      ctx.lineTo(offsetX + 300 * scale, offsetY - 80 * scale);
+      ctx.lineTo(offsetX + 140 * scale, offsetY - 120 * scale);
+      ctx.closePath();
+      ctx.fill();
+
+      // Rivers / Waterways (Hackensack River & Bay)
+      ctx.strokeStyle = '#D1D7E0';
+      ctx.lineWidth = 36 * scale;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(offsetX - 180 * scale, offsetY - 400 * scale);
+      ctx.bezierCurveTo(
+        offsetX - 120 * scale, offsetY - 180 * scale,
+        offsetX - 40 * scale, offsetY - 40 * scale,
+        offsetX + 80 * scale, offsetY + 300 * scale
+      );
+      ctx.stroke();
+
+      // Secondary River Tributary
+      ctx.lineWidth = 18 * scale;
+      ctx.beginPath();
+      ctx.moveTo(offsetX - 100 * scale, offsetY - 200 * scale);
+      ctx.bezierCurveTo(
+        offsetX + 60 * scale, offsetY - 120 * scale,
+        offsetX + 180 * scale, offsetY - 150 * scale,
+        offsetX + 350 * scale, offsetY - 180 * scale
+      );
+      ctx.stroke();
+
+      // Minor Stream
+      ctx.lineWidth = 10 * scale;
+      ctx.beginPath();
+      ctx.moveTo(offsetX - 320 * scale, offsetY + 80 * scale);
+      ctx.bezierCurveTo(
+        offsetX - 140 * scale, offsetY + 120 * scale,
+        offsetX - 20 * scale, offsetY + 80 * scale,
+        offsetX + 140 * scale, offsetY + 220 * scale
+      );
+      ctx.stroke();
+
+      // Street Grid (Secondary Roads - Clean Crisp White)
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 4 * scale;
+      ctx.beginPath();
+
+      // Horizontal Streets
+      for (let y = -400; y <= 400; y += 60) {
+        ctx.moveTo(offsetX - 450 * scale, offsetY + y * scale);
+        ctx.lineTo(offsetX + 450 * scale, offsetY + y * scale);
+      }
+      // Vertical Streets
+      for (let x = -400; x <= 400; x += 70) {
+        ctx.moveTo(offsetX + x * scale, offsetY - 450 * scale);
+        ctx.lineTo(offsetX + x * scale, offsetY + 450 * scale);
+      }
+      ctx.stroke();
+
+      // Major Highways & Arterials (with Subtle Soft Grey Casing)
+      const drawHighway = (p1, p2, ctrl1, ctrl2, w) => {
+        // Casing
+        ctx.strokeStyle = '#DCE0E6';
+        ctx.lineWidth = (w + 2.5) * scale;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        if (ctrl1 && ctrl2) ctx.bezierCurveTo(ctrl1.x, ctrl1.y, ctrl2.x, ctrl2.y, p2.x, p2.y);
+        else ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+
+        // Inner White
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = w * scale;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        if (ctrl1 && ctrl2) ctx.bezierCurveTo(ctrl1.x, ctrl1.y, ctrl2.x, ctrl2.y, p2.x, p2.y);
+        else ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+      };
+
+      // Arterial 1: Route 3 Diagonal
+      drawHighway(
+        { x: offsetX - 400 * scale, y: offsetY - 240 * scale },
+        { x: offsetX + 400 * scale, y: offsetY + 180 * scale },
+        { x: offsetX - 60 * scale, y: offsetY - 60 * scale },
+        { x: offsetX + 180 * scale, y: offsetY + 60 * scale },
+        9
+      );
+
+      // Arterial 2: North-South Turnpike
+      drawHighway(
+        { x: offsetX + 160 * scale, y: offsetY - 400 * scale },
+        { x: offsetX + 60 * scale, y: offsetY + 400 * scale },
+        { x: offsetX + 120 * scale, y: offsetY - 80 * scale },
+        { x: offsetX + 80 * scale, y: offsetY + 160 * scale },
+        11
+      );
+
+      // Arterial 3: East-West Sudirman Corridor
+      drawHighway(
+        { x: offsetX - 350 * scale, y: offsetY + 60 * scale },
+        { x: offsetX + 350 * scale, y: offsetY - 140 * scale },
+        { x: offsetX - 80 * scale, y: offsetY + 20 * scale },
+        { x: offsetX + 120 * scale, y: offsetY - 60 * scale },
+        9
+      );
+
+      // Place Labels (Figma Silver Map Typography)
+      ctx.font = `600 ${Math.max(9, 11 * scale)}px -apple-system, sans-serif`;
+      ctx.fillStyle = '#94A3B8';
+      ctx.textAlign = 'center';
+
+      ctx.fillText("East Rutherford", offsetX - 140 * scale, offsetY - 310 * scale);
+      ctx.fillText("Rutherford", offsetX - 240 * scale, offsetY - 190 * scale);
+      ctx.fillText("Secaucus", offsetX + 130 * scale, offsetY - 20 * scale);
+      ctx.fillText("Union City", offsetX + 310 * scale, offsetY + 60 * scale);
+      ctx.fillText("Hackensack Meadowlands", offsetX + 160 * scale, offsetY - 220 * scale);
+      ctx.fillText("Conservation Area", offsetX + 160 * scale, offsetY - 206 * scale);
+    }
+
+    // Render HTML Markers on Overlay
+    function renderMarkers() {
+      markersLayer.innerHTML = '';
+
+      // 1. Render Branches
+      branches.forEach(branch => {
+        const pt = latLngToScreen(branch.latitude, branch.longitude);
+
+        // Don't render if far off-screen
+        if (pt.x < -80 || pt.x > width + 80 || pt.y < -80 || pt.y > height + 80) return;
+
+        const pinEl = document.createElement('div');
+        pinEl.className = 'map-pin' + (branch.id === selectedBranchId ? ' active' : '');
+        pinEl.style.left = `${pt.x}px`;
+        pinEl.style.top = `${pt.y}px`;
+
+        const isKc = branch.type === 'KC';
+        const isKcp = branch.type === 'KCP';
+        const pinColor = isKc ? '#312E81' : (isKcp ? '#4338CA' : '#3B49DF');
+
+        pinEl.innerHTML = `
+          <div class="pin-shadow"></div>
+          <svg class="pin-svg" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.16344 0 0 7.16344 0 16C0 26.5 14.5 40.5 15.2 41.2C15.6 41.6 16.4 41.6 16.8 41.2C17.5 40.5 32 26.5 32 16C32 7.16344 24.8366 0 16 0Z" fill="${pinColor}"/>
+            <circle cx="16" cy="16" r="6.5" fill="#FFFFFF"/>
+            <circle cx="16" cy="16" r="3.5" fill="${pinColor}"/>
+          </svg>
+          <div class="pin-label">${branch.name.replace(/^(KC|KCP|ATM Center)\s*/, '')}</div>
+        `;
+
+        pinEl.onclick = (e) => {
+          e.stopPropagation();
+          onBranchPinClicked(branch, pt);
+        };
+
+        markersLayer.appendChild(pinEl);
+      });
+
+      // 2. Render User Location Arrow
+      const userPt = latLngToScreen(userPos.lat, userPos.lng);
+      const userEl = document.createElement('div');
+      userEl.className = 'user-arrow-marker';
+      userEl.style.left = `${userPt.x}px`;
+      userEl.style.top = `${userPt.y}px`;
+      userEl.innerHTML = `
+        <svg class="user-arrow-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="12,2 22,22 12,17 2,22" fill="#EF4444" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+      `;
+      markersLayer.appendChild(userEl);
+
+      // Update popup position if open
+      if (activePopupBranch) {
+        const pt = latLngToScreen(activePopupBranch.latitude, activePopupBranch.longitude);
+        popupCard.style.left = `${pt.x}px`;
+        popupCard.style.top = `${pt.y - 12}px`;
+      }
+    }
+
+    function render() {
+      renderMap();
+      renderMarkers();
+    }
+
+    function onBranchPinClicked(branch, pt) {
+      selectedBranchId = branch.id;
+      activePopupBranch = branch;
+
+      // Fill Popup
+      const badgeEl = document.getElementById('popupBadge');
+      badgeEl.className = `popup-badge badge-${(branch.type || 'kc').toLowerCase()}`;
+      badgeEl.textContent = branch.type || 'Cabang';
+
+      document.getElementById('popupTitle').textContent = branch.name;
+      document.getElementById('popupAddress').textContent = branch.address;
+      document.getElementById('popupHours').textContent = branch.hours || 'Buka';
+      document.getElementById('popupDistance').textContent = branch.distance || '';
+
+      popupCard.style.display = 'block';
+      popupCard.style.left = `${pt.x}px`;
+      popupCard.style.top = `${pt.y - 12}px`;
+
+      // Notify Android
+      if (window.AndroidBridge && window.AndroidBridge.onBranchSelected) {
+        window.AndroidBridge.onBranchSelected(branch.id);
+      }
+
+      render();
+    }
+
+    document.getElementById('btnSelectFromPopup').onclick = () => {
+      if (activePopupBranch && window.AndroidBridge && window.AndroidBridge.onBranchConfirmed) {
+        window.AndroidBridge.onBranchConfirmed(activePopupBranch.id);
+      }
+    };
+
+    // Close popup when tapping empty map
+    canvas.onclick = () => {
+      popupCard.style.display = 'none';
+      activePopupBranch = null;
+    };
+
+    // Pan / Drag Interaction (Mouse & Touch)
+    function onTouchStart(clientX, clientY) {
+      isDragging = true;
+      dragStartX = clientX;
+      dragStartY = clientY;
+      initialOffsetX = offsetX;
+      initialOffsetY = offsetY;
+    }
+
+    function onTouchMove(clientX, clientY) {
+      if (!isDragging) return;
+      const dx = clientX - dragStartX;
+      const dy = clientY - dragStartY;
+      offsetX = initialOffsetX + dx;
+      offsetY = initialOffsetY + dy;
+      render();
+    }
+
+    function onTouchEnd() {
+      isDragging = false;
+    }
+
+    canvas.addEventListener('mousedown', (e) => onTouchStart(e.clientX, e.clientY));
+    window.addEventListener('mousemove', (e) => onTouchMove(e.clientX, e.clientY));
+    window.addEventListener('mouseup', onTouchEnd);
+
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        onTouchStart(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1) {
+        onTouchMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', onTouchEnd);
+
+    // Zoom on wheel or pinch
+    window.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+      scale = Math.min(Math.max(scale * zoomFactor, 0.6), 2.8);
+      render();
+    }, { passive: false });
+
+    // Smooth Pan to Target Branch
+    window.focusBranch = function(branchId) {
+      const branch = branches.find(b => b.id === branchId);
+      if (!branch) return;
+
+      selectedBranchId = branchId;
+      activePopupBranch = branch;
+
+      const targetX = width / 2;
+      const targetY = height * 0.32;
+
+      // Animate pan
+      const startX = offsetX;
+      const startY = offsetY;
+      const endX = targetX - (branch.longitude - CENTER_LNG) * LNG_SCALE * scale;
+      const endY = targetY + (branch.latitude - CENTER_LAT) * LAT_SCALE * scale;
+
+      let startTime = performance.now();
+      const duration = 500;
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+
+        offsetX = startX + (endX - startX) * ease;
+        offsetY = startY + (endY - startY) * ease;
+        render();
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          const pt = latLngToScreen(branch.latitude, branch.longitude);
+          onBranchPinClicked(branch, pt);
+        }
+      }
+      requestAnimationFrame(step);
+    };
+
+    window.setBranches = function(branchesJson) {
+      try {
+        const list = typeof branchesJson === 'string' ? JSON.parse(branchesJson) : branchesJson;
+        if (Array.isArray(list) && list.length > 0) {
+          branches = list;
+          render();
+        }
+      } catch (e) {
+        console.error('Error parsing branches:', e);
+      }
+    };
+
+    window.setUserLocation = function(lat, lng) {
+      userPos.lat = lat;
+      userPos.lng = lng;
+      // Re-center on user
+      const targetX = width / 2;
+      const targetY = height * 0.35;
+      offsetX = targetX - (lng - CENTER_LNG) * LNG_SCALE * scale;
+      offsetY = targetY + (lat - CENTER_LAT) * LAT_SCALE * scale;
+      render();
+    };
+
+    // Default Seed Initializer
+    window.addEventListener('load', () => {
+      resize();
+      if (window.AndroidBridge && window.AndroidBridge.onMapReady) {
+        window.AndroidBridge.onMapReady();
+      }
+    });
+    window.addEventListener('resize', resize);
+  </script>
+</body>
+</html>

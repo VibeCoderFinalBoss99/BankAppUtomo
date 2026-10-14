@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UTOMO Bank</string>
+    <string name="str_beranda">首页</string>
+    <string name="str_profil">个人中心</string>
+    <string name="str_notifikasi">通知</string>
+    <string name="str_logout">退出登录</string>
+    <string name="str_qris">扫码支付</string>
+    <string name="back">返回</string>
+
+    <!-- Navigation & Bottom Bar -->
+    <string name="nav_home">首页</string>
+    <string name="nav_history">历史</string>
+    <string name="nav_message">消息</string>
+    <string name="nav_setting">设置</string>
+    <string name="nav_exchange">货币兑换</string>
+    <string name="nav_statistics">统计</string>
+    <string name="nav_language">语言</string>
+
+    <!-- Quick Categorize Menu -->
+    <string name="action_sent">转出</string>
+    <string name="action_receive">转入</string>
+    <string name="action_loan">贷款</string>
+    <string name="action_topup">充值</string>
+
+    <!-- 3x3 Action Tiles -->
+    <string name="action_account_card">账户与卡片</string>
+    <string name="action_transfer">转账</string>
+    <string name="action_withdraw">提现</string>
+    <string name="action_mobile_prepaid">话费充值</string>
+    <string name="action_pay_bill">生活缴费</string>
+    <string name="action_save_online">定期理财</string>
+    <string name="action_credit_card">信用卡</string>
+    <string name="action_transaction_report">账单报表</string>
+    <string name="action_beneficiary">收款人</string>
+
+    <!-- Currency Exchange -->
+    <string name="title_currency_exchange">多币种兑换</string>
+    <string name="desc_currency_exchange">即时多币种外汇兑换 (USD, KRW, VND, IDR)</string>
+    <string name="btn_exchange">立即兑换 →</string>
+
+    <!-- Recent Transactions & Quick History -->
+    <string name="title_recent_transactions">最近交易</string>
+    <string name="btn_see_all">查看全部</string>
+
+    <!-- Messages & Alerts -->
+    <string name="title_messages">消息</string>
+    <string name="notification_detail_header">消息</string>
+    <string name="tab_transactions">交易通知</string>
+    <string name="tab_announcements">银行公告</string>
+    <string name="title_customer_support">24小时客服</string>
+    <string name="desc_customer_support">24/7 贵宾专线 • 在线人工咨询</string>
+    <string name="btn_read_all">全部已读</string>
+    <string name="btn_chat">开始咨询</string>
+
+    <!-- Settings & Profile -->
+    <string name="title_settings">系统设置</string>
+    <string name="section_account_security">账户与安全</string>
+    <string name="item_change_password">修改密码</string>
+    <string name="item_biometric_login">生物识别登录</string>
+    <string name="section_preferences">偏好设置</string>
+    <string name="item_language">语言选择</string>
+    <string name="item_dark_mode">深色模式</string>
+    <string name="section_support">帮助与服务</string>
+    <string name="item_customer_care">24小时专属客服</string>
+    <string name="item_app_info">应用信息</string>
+    <string name="item_logout">退出登录</string>
+
+    <!-- Statistics -->
+    <string name="total_expense">总支出</string>
+    <string name="total_income">总收入</string>
+    <string name="expense_breakdown">支出明细</string>
+
+    <!-- Language Selector -->
+    <string name="hint_search_language">搜索语言...</string>
+</resources>

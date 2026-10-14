@@ -1,0 +1,330 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registerScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical"
+    android:background="@drawable/bg_screen_modern_mesh">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="50dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/auth_register_title"
+            android:textColor="@color/figma_text_title"
+            android:textSize="26sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/register_join_subtitle"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="14sp" />
+
+        <!-- Security / Guarantee badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_tile_soft_blue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/logoMarkRegister"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_figma_chip"
+                app:tint="@color/figma_primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/auth_register_note"
+                android:textColor="@color/figma_text_title"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Form Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_figma_card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Full Name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/auth_full_name_label"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:id="@+id/containerNama"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_figma_input">
+
+                <EditText
+                    android:id="@+id/editTextNamaLengkap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/auth_full_name_hint"
+                    android:inputType="textPersonName"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="44dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconNamaValid"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="14dp"
+                    android:src="@drawable/ic_check_circle_green"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <!-- KTP / National ID -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/auth_ktp_label"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:id="@+id/containerKtp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_figma_input">
+
+                <EditText
+                    android:id="@+id/editTextKtp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="3171xxxxxxxxxxxx"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:maxLength="16"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="44dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconKtpValid"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="14dp"
+                    android:src="@drawable/ic_check_circle_green"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <!-- Email -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/auth_email_label"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:id="@+id/containerEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_figma_input">
+
+                <EditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/auth_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="44dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconEmailValid"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="14dp"
+                    android:src="@drawable/ic_check_circle_green"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <!-- Phone Number -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/auth_phone_label"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:id="@+id/containerPhone"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_figma_input">
+
+                <EditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/auth_phone_hint"
+                    android:inputType="phone"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="44dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconPhoneValid"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="14dp"
+                    android:src="@drawable/ic_check_circle_green"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <!-- Password -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/auth_password_label"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:id="@+id/containerPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_figma_input">
+
+                <EditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/auth_register_password_hint"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="74dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconPasswordValid"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="6dp"
+                    android:layout_toStartOf="@id/btnTogglePassword"
+                    android:src="@drawable/ic_check_circle_green"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/btnTogglePassword"
+                    android:layout_width="44dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/toggle_password_visibility"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_eye_off"
+                    app:tint="@color/figma_text_muted" />
+            </RelativeLayout>
+
+            <!-- Password Requirements Hint -->
+            <TextView
+                android:id="@+id/textPasswordRequirements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/auth_password_requirements_hint"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="11sp" />
+
+            <!-- Register Button -->
+            <TextView
+                android:id="@+id/buttonRegister"
+                style="@style/FigmaButtonPrimary"
+                android:layout_marginTop="22dp"
+                android:text="@string/register_button" />
+        </LinearLayout>
+
+        <!-- Back to Login -->
+        <TextView
+            android:id="@+id/textGoToLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/auth_login_prompt"
+            android:textColor="@color/figma_primary"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "170492840437",
+    "firebase_url": "https://utomobank-ab445-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "utomobank-ab445",
+    "storage_bucket": "utomobank-ab445.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170492840437:android:cf10c17193d399c063f8bc",
+        "android_client_info": {
+          "package_name": "com.example.bankapputomo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170492840437-crbasdif2nvf7vlfkpp4i4er4gaib829.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bankapputomo",
+            "certificate_hash": "81a7bf96ee534e79d686df7d45a41780cafbcb28"
+          }
+        },
+        {
+          "client_id": "170492840437-dgoq2gmo7fmq5ochguh6iusm1n4mut3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPXI1hqBWFUJ7G848COpMkIJ2aYkOq2RM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170492840437-dgoq2gmo7fmq5ochguh6iusm1n4mut3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

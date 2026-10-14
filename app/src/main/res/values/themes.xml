@@ -1,0 +1,144 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BankAppUtomo" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/figma_bg</item>
+        <item name="android:colorAccent">@color/bank_accent</item>
+        <item name="colorPrimary">@color/figma_primary</item>
+    </style>
+
+    <style name="Theme.BankAppUtomo" parent="Base.Theme.BankAppUtomo" />
+
+    <!-- Figma Recreate Typography Tokens -->
+    <style name="FigmaTitle1">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/figma_text_title</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="FigmaTitle2">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/figma_text_title</item>
+    </style>
+
+    <style name="FigmaTitle3">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/figma_text_title</item>
+    </style>
+
+    <style name="FigmaBody1">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/figma_text_body</item>
+    </style>
+
+    <style name="FigmaBody2">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/figma_text_body</item>
+    </style>
+
+    <style name="FigmaBody3">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/figma_text_body</item>
+    </style>
+
+    <style name="FigmaCaption1">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/figma_text_muted</item>
+    </style>
+
+    <style name="FigmaCaption2">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/figma_text_muted</item>
+    </style>
+
+    <!-- Figma Button Styles -->
+    <style name="FigmaButtonPrimary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:background">@drawable/bg_figma_button_primary</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="FigmaButtonSecondary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:background">@drawable/bg_figma_button_secondary</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/figma_text_title</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <!-- Legacy aliases for backward compatibility -->
+    <style name="SectionTitle" parent="FigmaTitle3" />
+    <style name="DashboardAction">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="DashboardActionIcon">
+        <item name="android:layout_width">52dp</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+    <style name="DashboardActionText" parent="FigmaCaption2">
+        <item name="android:layout_width" >wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/figma_text_title</item>
+    </style>
+
+    <!-- Bottom Navigation Custom Styling for Language Compatibility & Spacing -->
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/white</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="elevation">0dp</item>
+        <item name="itemIconTint">@color/color_bottom_nav_item</item>
+        <item name="itemTextColor">@color/color_bottom_nav_item</item>
+        <item name="itemActiveIndicatorStyle">@null</item>
+        <item name="itemTextAppearanceActive">@style/App.BottomNavText.Active</item>
+        <item name="itemTextAppearanceInactive">@style/App.BottomNavText.Inactive</item>
+        <item name="itemIconSize">24dp</item>
+        <item name="itemPaddingTop">4dp</item>
+        <item name="itemPaddingBottom">4dp</item>
+        <item name="android:layout_height">68dp</item>
+        <item name="android:minHeight">68dp</item>
+        <item name="itemHorizontalTranslationEnabled">false</item>
+    </style>
+
+    <style name="App.BottomNavText.Active" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">10.5sp</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textColor">@color/figma_primary</item>
+    </style>
+
+    <style name="App.BottomNavText.Inactive" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">10.5sp</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textColor">@color/figma_text_muted</item>
+    </style>
+</resources>

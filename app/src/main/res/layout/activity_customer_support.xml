@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Top App Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/figma_surface"
+        android:elevation="4dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnSupportBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_tile_soft_blue"
+            android:padding="10dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            app:tint="@color/figma_primary"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btnSupportBack"
+            android:layout_toStartOf="@id/layoutTopActions"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textSupportTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/support_title"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <!-- Online Green Dot -->
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_badge_success" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textSupportSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/support_online_priority"
+                android:textColor="@color/bank_success"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Right Action Icons: Ticket History & Call Hotline -->
+        <LinearLayout
+            android:id="@+id/layoutTopActions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/btnTicketHistory"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_tile_soft_blue"
+                android:padding="10dp"
+                android:src="@drawable/ic_figma_document"
+                app:tint="@color/figma_primary"
+                android:contentDescription="@string/support_history_title"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="8dp" />
+
+            <ImageView
+                android:id="@+id/btnCallHotline"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_tile_soft_blue"
+                android:padding="10dp"
+                android:src="@drawable/ic_call_support"
+                app:tint="@color/figma_primary"
+                android:contentDescription="Call Hotline"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Active Ticket Banner (Shown when a ticket is actively being tracked/discussed) -->
+    <LinearLayout
+        android:id="@+id/layoutActiveTicketBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_tile_soft_blue"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_figma_document"
+            app:tint="@color/figma_primary"
+            android:layout_marginEnd="10dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textActiveTicketSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Tiket: #UTM-XXXX"
+                android:textColor="@color/figma_text_title"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/textActiveTicketCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Kategori Masalah"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textActiveTicketStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_success"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="Terbuka"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/btnTicketHeaderAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_figma_tab_active"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:text="Opsi"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Quick Help Suggestion Chips (Pre-fills ticket creation) -->
+    <HorizontalScrollView
+        android:id="@+id/layoutSuggestionChips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/chipHelpTransfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tile_soft_blue"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="7dp"
+                android:text="@string/support_check_transfer"
+                android:textColor="@color/figma_primary"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipHelpCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tile_soft_orange"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="7dp"
+                android:text="@string/support_card_pin"
+                android:textColor="#F2994A"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipHelpRates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tile_soft_green"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="7dp"
+                android:text="@string/support_currency_rates"
+                android:textColor="#27AE60"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/chipHelpHuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tile_soft_purple"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="7dp"
+                android:text="@string/support_contact_agent"
+                android:textColor="#9B51E0"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Chat Messages ScrollView -->
+    <ScrollView
+        android:id="@+id/chatScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/chatThreadContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- System date header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/support_today"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="11sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Agent Welcome Auto-Reply Dialog Card with Kirim Ticket Button -->
+            <LinearLayout
+                android:id="@+id/layoutWelcomeCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="14dp">
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/ic_support_headset"
+                    android:background="@drawable/bg_tile_soft_blue"
+                    android:padding="8dp"
+                    android:layout_marginEnd="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="320dp"
+                    android:background="@drawable/bg_chat_bubble_incoming"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Customer Service UTOMO Bank • Auto-Reply"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="11sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/textWelcomeGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/support_cs_auto_greeting"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp"
+                        android:lineSpacingExtra="3dp" />
+
+                    <!-- Action Button: Kirim Tiket Bantuan (The only place to create/fill ticket) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnFillTicket"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/support_btn_fill_ticket"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_figma_document"
+                        app:iconTint="@color/white"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="12dp"
+                        android:backgroundTint="@color/figma_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/support_just_now"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Dynamic Live Messages Container (Real-time syncing with Firestore & Admin Panel) -->
+            <LinearLayout
+                android:id="@+id/chatDynamicMessagesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Input Dock -->
+    <LinearLayout
+        android:id="@+id/layoutInputBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/figma_surface"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp">
+
+        <EditText
+            android:id="@+id/inputChatMessage"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_figma_input"
+            android:hint="@string/support_input_hint_disabled"
+            android:textColorHint="@color/figma_text_muted"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/figma_text_title"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:enabled="false" />
+
+        <FrameLayout
+            android:id="@+id/btnSendMessage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_figma_button_primary"
+            android:alpha="0.4"
+            android:clickable="false"
+            android:focusable="false">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_send_message"
+                app:tint="@color/white" />
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

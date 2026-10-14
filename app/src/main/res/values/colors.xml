@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bank_primary">#0B57D0</color>
+    <color name="bank_primary_dark">#08388A</color>
+    <color name="bank_accent">#F2B84B</color>
+    <color name="bank_bg">#F4F7FC</color>
+    <color name="bank_card">#FFFFFFFF</color>
+    <color name="bank_text">#12233D</color>
+    <color name="bank_muted">#64748B</color>
+    <color name="bank_line">#DCE4F0</color>
+    <color name="bank_success">#26A269</color>
+    <color name="bank_blue">#0EA5E9</color>
+    <color name="bank_orange">#F97316</color>
+    <color name="bank_red">#E5484D</color>
+    <color name="bank_purple">#6D5DF6</color>
+    <color name="bank_cyan">#00A7A7</color>
+    <color name="bank_yellow_soft">#FFF4D8</color>
+    <color name="bank_green_soft">#E7F7EF</color>
+    <color name="bank_blue_soft">#E7EFFC</color>
+    <color name="bank_orange_soft">#FFF0E7</color>
+    <color name="input_text">#000000</color>
+
+    <!-- Figma Recreate Color Role Mappings (Mapped to app palette) -->
+    <color name="figma_primary">#0B57D0</color>
+    <color name="figma_primary_dark">#08388A</color>
+    <color name="figma_secondary">#26A269</color>
+    <color name="figma_divider">#DCE4F0</color>
+    <color name="figma_card_navy">#141E3A</color>
+    <color name="figma_card_blue_wave">#0284C7</color>
+    <color name="figma_card_orange">#E65100</color>
+    <color name="figma_card_gold">#F59E0B</color>
+    <color name="figma_surface">#FFFFFFFF</color>
+    <color name="figma_bg">#F4F7FC</color>
+    <color name="figma_text_title">#12233D</color>
+    <color name="figma_text_body">#2C3E55</color>
+    <color name="figma_text_muted">#64748B</color>
+    <color name="figma_border">#DCE4F0</color>
+    <color name="figma_soft_blue">#E7EFFC</color>
+    <color name="figma_soft_red">#FEE2E2</color>
+    <color name="figma_soft_cyan">#E0F2FE</color>
+    <color name="figma_soft_yellow">#FEF3C7</color>
+    <color name="figma_soft_green">#E7F7EF</color>
+    <color name="figma_soft_purple">#EDE9FE</color>
+    <color name="figma_soft_pink">#FCE7F3</color>
+    <color name="figma_soft_orange">#FFF0E7</color>
+    <color name="figma_warning">#F59E0B</color>
+
+    <color name="source_b_surface">#FFFFFFFF</color>
+    <color name="source_b_text">#25253D</color>
+    <color name="source_b_muted">#A2A2A7</color>
+    <color name="source_b_blue">#0066FF</color>
+
+    <!-- Glassmorphism Container Colors (Light Mode) -->
+    <color name="glass_card_bg">#18FFFFFF</color>
+    <color name="glass_card_stroke">#330B57D0</color>
+    <color name="glass_card_inner">#10FFFFFF</color>
+</resources>

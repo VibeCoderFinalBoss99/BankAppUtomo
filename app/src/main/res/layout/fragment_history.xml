@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Header: Back, Title, Analytics Icon Only -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnHistoryBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            app:tint="@color/figma_text_title"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/btnHistoryBack"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/payment_history_title"
+            android:textColor="@color/figma_text_title"
+            android:textSize="20sp" />
+
+        <!-- Analytics Icon Button in Top Right ONLY -->
+        <ImageView
+            android:id="@+id/btnHistoryAnalytics"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_chart"
+            app:tint="@color/figma_primary"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <!-- Search Bar & Filter Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="10dp">
+
+        <!-- Search Input Box -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_figma_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="10dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/figma_text_muted" />
+
+            <EditText
+                android:id="@+id/inputHistorySearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/history_search_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/figma_text_title"
+                android:textColorHint="@color/figma_text_muted"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/btnClearSearch"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="3dp"
+                android:src="@drawable/ic_more"
+                android:visibility="gone"
+                app:tint="@color/figma_text_muted" />
+        </LinearLayout>
+
+        <!-- Filter Button in Search Row -->
+        <FrameLayout
+            android:id="@+id/btnOpenHistoryFilter"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_figma_card"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_filter"
+                app:tint="@color/figma_primary" />
+
+            <!-- Active Filter Dot Indicator -->
+            <View
+                android:id="@+id/indicatorFilterActive"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_badge_new"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Active Filters & Result Count Strip -->
+    <LinearLayout
+        android:id="@+id/layoutActiveFiltersRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textFilterResultCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Menampilkan 0 transaksi"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnClearAllFilters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="4dp"
+                android:text="@string/history_filter_clear_all"
+                android:textColor="@color/bank_red"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/containerActiveFilterChips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Total In / Out Summary Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHistorySummaryStrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1.2dp"
+        app:strokeColor="@color/glass_card_stroke"
+        app:cardBackgroundColor="@color/figma_surface">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:weightSum="2">
+
+            <!-- Total Income -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/history_total_in"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/textHistoryTotalIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="+ Rp 0"
+                    android:textColor="@color/bank_success"
+                    android:textSize="13.5sp" />
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/figma_border" />
+
+            <!-- Total Expense -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="14dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/history_total_out"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/textHistoryTotalExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="- Rp 0"
+                    android:textColor="@color/figma_primary"
+                    android:textSize="13.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Horizontally Scrollable Category Chips (All, Transfer, Receive, Topup, PLN, PDAM, Internet, Mobile, etc.) -->
+    <HorizontalScrollView
+        android:id="@+id/scrollCategoryChips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:id="@+id/containerCategoryChips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <!-- Transactions List Container -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Transaction Items & Date Headers Container -->
+            <LinearLayout
+                android:id="@+id/containerPaymentHistoryCards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="24dp" />
+
+            <!-- Empty State Container -->
+            <LinearLayout
+                android:id="@+id/layoutHistoryEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp"
+                android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    tools:ignore="MissingClass"
+                    android:id="@+id/lottieHistoryEmpty"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="anim_empty_state.json"
+                    app:lottie_loop="true" />
+
+                <TextView
+                    android:id="@+id/textHistoryEmptyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/history_empty_title"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textHistoryEmptySubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/history_empty_desc"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

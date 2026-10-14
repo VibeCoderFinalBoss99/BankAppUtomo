@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layoutLanguageRowClick"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:gravity="center_vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Circular Flag Vector Icon -->
+        <ImageView
+            android:id="@+id/imgLanguageFlag"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_flag_us_round"
+            android:contentDescription="Language Flag" />
+
+        <!-- Language Name -->
+        <TextView
+            android:id="@+id/textLanguageName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_medium"
+            android:text="English"
+            android:textColor="@color/figma_text_title"
+            android:textSize="15sp" />
+
+        <!-- Blue Circular Checkmark when Selected -->
+        <ImageView
+            android:id="@+id/iconLanguageCheck"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_check_circle_blue"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Subtle row divider matching Figma design -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/figma_border"
+        android:alpha="0.4" />
+</LinearLayout>

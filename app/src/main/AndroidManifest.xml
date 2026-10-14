@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bankapputomo"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <application
+        android:name=".BankApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.BankAppUtomo">
+
+        <!-- Protected Splash Screen -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Authentication & Onboarding -->
+        <activity android:name=".OnboardingActivity" />
+        <activity 
+            android:name=".LoginActivity" 
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true" />
+        <activity 
+            android:name=".RegisterActivity" 
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Main Dashboard -->
+        <activity 
+            android:name=".DashboardActivity" 
+            android:launchMode="singleTop"
+            android:exported="true" />
+        <activity android:name=".MainActivity" />
+        <activity 
+            android:name=".NotificationActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".StatisticsActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".LanguageActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".CustomerSupportActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".SupportTicketsActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".TicketDetailActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".MaintenanceActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".SuspendedAccountActivity" 
+            android:exported="true" />
+
+        <!-- Figma Recreated Activities -->
+        <activity 
+            android:name=".AccountCardActivity" 
+            android:exported="true" />
+        <activity android:name=".CardDetailActivity" />
+        <activity android:name=".CreditCardActivity" />
+        <activity 
+            android:name=".TransferActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".BeneficiaryActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".WithdrawActivity"
+            android:exported="true" />
+        <activity 
+            android:name=".BranchPickerActivity"
+            android:exported="true" />
+        <activity 
+            android:name=".MobilePrepaidActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".TopUpMenuActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".EWalletTopUpActivity" 
+            android:exported="true" />
+        <activity android:name=".BillPaymentActivity" />
+        <activity 
+            android:name=".SaveOnlineActivity" 
+            android:exported="true" />
+        <activity 
+            android:name=".ExchangeRateActivity" 
+            android:exported="true" />
+        <activity android:name=".ExchangeActivity" />
+        <activity android:name=".TransactionReportActivity" />
+        <activity android:name=".ReceiveActivity" />
+        <activity android:name=".ReceiptActivity" />
+
+        <!-- FileProvider for Sharing Receipts & QR Images securely -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

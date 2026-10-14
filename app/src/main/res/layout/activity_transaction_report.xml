@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:padding="6dp" />
+
+        <TextView
+            android:id="@+id/reportHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Transaction Report"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/btnExportReport"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_share"
+            android:padding="6dp"
+            app:tint="@color/figma_primary" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/cardReportCaptureArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Month Selector Pill -->
+            <LinearLayout
+                android:id="@+id/btnSelectMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_figma_card"
+                android:gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/textSelectedMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="October 2026"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/ic_more"
+                    app:tint="@color/figma_text_muted" />
+            </LinearLayout>
+
+            <!-- Income vs Expense Cards -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <!-- Income Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tile_soft_green"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total Income"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textReportIncome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 18.500.000"
+                        android:textColor="@color/figma_secondary"
+                        android:textSize="15sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <!-- Expense Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_tile_soft_red"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total Expense"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textReportExpense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 7.250.000"
+                        android:textColor="@color/bank_red"
+                        android:textSize="15sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 6-Month Visual Trend (Figma Bar Chart Representation) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Spending Analytics"
+                android:textColor="@color/figma_text_title"
+                android:textSize="15sp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/bg_figma_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="20dp">
+
+                <!-- Mock Bar Chart Bars -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <!-- May -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal">
+                        <View
+                            android:layout_width="16dp"
+                            android:layout_height="50dp"
+                            android:background="@color/figma_divider" />
+                    </LinearLayout>
+
+                    <!-- Jun -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal">
+                        <View
+                            android:layout_width="16dp"
+                            android:layout_height="70dp"
+                            android:background="@color/figma_divider" />
+                    </LinearLayout>
+
+                    <!-- Jul -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal">
+                        <View
+                            android:layout_width="16dp"
+                            android:layout_height="90dp"
+                            android:background="@color/figma_divider" />
+                    </LinearLayout>
+
+                    <!-- Aug -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal">
+                        <View
+                            android:layout_width="16dp"
+                            android:layout_height="65dp"
+                            android:background="@color/figma_divider" />
+                    </LinearLayout>
+
+                    <!-- Sep -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal">
+                        <View
+                            android:layout_width="16dp"
+                            android:layout_height="80dp"
+                            android:background="@color/figma_divider" />
+                    </LinearLayout>
+
+                    <!-- Oct (Current - Highlighted) -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal">
+                        <View
+                            android:layout_width="16dp"
+                            android:layout_height="110dp"
+                            android:background="@color/figma_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Month labels -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:fontFamily="@font/poppins_regular" android:text="May" android:textColor="@color/figma_text_muted" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:fontFamily="@font/poppins_regular" android:text="Jun" android:textColor="@color/figma_text_muted" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:fontFamily="@font/poppins_regular" android:text="Jul" android:textColor="@color/figma_text_muted" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:fontFamily="@font/poppins_regular" android:text="Aug" android:textColor="@color/figma_text_muted" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:fontFamily="@font/poppins_regular" android:text="Sep" android:textColor="@color/figma_text_muted" android:textSize="11sp" />
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:fontFamily="@font/poppins_bold" android:text="Oct" android:textColor="@color/figma_primary" android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Category Breakdown (Figma Category breakdown) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Spending by Category"
+                android:textColor="@color/figma_text_title"
+                android:textSize="15sp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_figma_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Shopping -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/poppins_medium" android:text="Belanja &amp; Ritel" android:textColor="@color/figma_text_title" android:textSize="13sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:fontFamily="@font/poppins_semibold" android:text="45% • Rp 3.262.500" android:textColor="@color/figma_text_title" android:textSize="12sp" />
+                </RelativeLayout>
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:max="100"
+                    android:progress="45"
+                    android:progressTint="@color/figma_primary"
+                    android:layout_marginBottom="14dp" />
+
+                <!-- Bills & Utilities -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/poppins_medium" android:text="Tagihan &amp; Utilitas" android:textColor="@color/figma_text_title" android:textSize="13sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:fontFamily="@font/poppins_semibold" android:text="25% • Rp 1.812.500" android:textColor="@color/figma_text_title" android:textSize="12sp" />
+                </RelativeLayout>
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:max="100"
+                    android:progress="25"
+                    android:progressTint="@color/figma_secondary"
+                    android:layout_marginBottom="14dp" />
+
+                <!-- Food & Dining -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/poppins_medium" android:text="Makanan &amp; Kuliner" android:textColor="@color/figma_text_title" android:textSize="13sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:fontFamily="@font/poppins_semibold" android:text="20% • Rp 1.450.000" android:textColor="@color/figma_text_title" android:textSize="12sp" />
+                </RelativeLayout>
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:max="100"
+                    android:progress="20"
+                    android:progressTint="#FFA726"
+                    android:layout_marginBottom="14dp" />
+
+                <!-- Transfers -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/poppins_medium" android:text="Lainnya &amp; Transfer" android:textColor="@color/figma_text_title" android:textSize="13sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:fontFamily="@font/poppins_semibold" android:text="10% • Rp 725.000" android:textColor="@color/figma_text_title" android:textSize="12sp" />
+                </RelativeLayout>
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:max="100"
+                    android:progress="10"
+                    android:progressTint="#AB47BC" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

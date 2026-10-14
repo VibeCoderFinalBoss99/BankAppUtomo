@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="28dp">
+
+    <!-- Drag Handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/bg_bottom_sheet_handle" />
+
+    <!-- Sheet Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Filter Riwayat Transaksi"
+            android:textColor="@color/figma_text_title"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/btnFilterReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="6dp"
+            android:text="Reset"
+            android:textColor="@color/bank_red"
+            android:textSize="13sp"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="480dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Section 1: Rentang Waktu (Quick Date Ranges) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Rentang Waktu"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13.5sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupDateRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDateAll"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Semua Waktu" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDateToday"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari Ini" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDate7Days"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7 Hari Terakhir" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDate30Days"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 Hari Terakhir" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDateThisMonth"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bulan Ini" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDateThisYear"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tahun Ini" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Section 2: Jenis Transaksi (Uang Masuk / Keluar) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Jenis Arus Dana"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13.5sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFlowType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFlowAll"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Semua Arus" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFlowIn"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uang Masuk (+)" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFlowOut"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uang Keluar (-)" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Section 3: Status Transaksi -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Status Transaksi"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13.5sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipStatusAll"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Semua Status" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipStatusSuccess"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Berhasil" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipStatusFailed"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gagal" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Section 4: Kategori Transaksi (Multi-Select) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Kategori Layanan"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13.5sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:singleSelection="false">
+
+                <!-- Populated dynamically with all categories -->
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Apply Button -->
+    <TextView
+        android:id="@+id/btnFilterApply"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_figma_button_primary"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="Terapkan Filter"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:clickable="true"
+        android:focusable="true" />
+</LinearLayout>

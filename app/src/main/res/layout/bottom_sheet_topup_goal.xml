@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_bottom_sheet_handle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/textTopUpGoalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Setor Dana ke Tabungan"
+        android:textColor="@color/figma_text_title"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textTopUpAvailableBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Saldo utama: Rp 0"
+        android:textColor="@color/figma_primary"
+        android:textSize="13sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nominal Setoran (Rp)"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="13sp"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/inputTopUpAmount"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_figma_input"
+        android:fontFamily="@font/poppins_bold"
+        android:hint="Rp 500.000"
+        android:inputType="number"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/figma_text_title"
+        android:textColorHint="@color/figma_text_muted"
+        android:textSize="16sp"
+        android:layout_marginBottom="14dp" />
+
+    <!-- Quick Chips -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/chipTopUp100k"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="100 Ribu"
+            android:textColor="@color/figma_text_title"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/chipTopUp500k"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="500 Ribu"
+            android:textColor="@color/figma_text_title"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/chipTopUp1M"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="1 Juta"
+            android:textColor="@color/figma_text_title"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/chipTopUp5M"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="5 Juta"
+            android:textColor="@color/figma_text_title"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnSubmitTopUpGoal"
+        style="@style/FigmaButtonPrimary"
+        android:text="Setor Sekarang"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/btnCancelTopUpGoal"
+        style="@style/FigmaButtonSecondary"
+        android:text="Batal" />
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <group>
+        <clip-path android:pathData="M 24, 24 m -24, 0 a 24,24 0 1,0 48,0 a 24,24 0 1,0 -48,0" />
+        <!-- Red Stripes Background -->
+        <path
+            android:fillColor="#B71234"
+            android:pathData="M0,0 H48 V48 H0 Z" />
+        <!-- White Stripes -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,3.7 H48 V7.4 H0 Z M0,11.1 H48 V14.8 H0 Z M0,18.5 H48 V22.2 H0 Z M0,25.9 H48 V29.6 H0 Z M0,33.3 H48 V37 H0 Z M0,40.7 H48 V44.4 H0 Z" />
+        <!-- Blue Canton -->
+        <path
+            android:fillColor="#0C2340"
+            android:pathData="M0,0 H22 V26 H0 Z" />
+        <!-- Stars/Pattern inside Canton -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M4,4h2v2h-2z M10,4h2v2h-2z M16,4h2v2h-2z M7,8h2v2h-2z M13,8h2v2h-2z M4,12h2v2h-2z M10,12h2v2h-2z M16,12h2v2h-2z M7,16h2v2h-2z M13,16h2v2h-2z M4,20h2v2h-2z M10,20h2v2h-2z M16,20h2v2h-2z" />
+    </group>
+    <!-- Border -->
+    <path
+        android:strokeColor="#22000000"
+        android:strokeWidth="1"
+        android:pathData="M 24, 24 m -23.5, 0 a 23.5,23.5 0 1,0 47,0 a 23.5,23.5 0 1,0 -47,0" />
+</vector>

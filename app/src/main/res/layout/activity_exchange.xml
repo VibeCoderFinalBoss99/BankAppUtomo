@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Header (Exchange #1) -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:padding="6dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            app:tint="@color/figma_text_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/btnBack"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/exchange_title"
+            android:textColor="@color/figma_text_title"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="32dp">
+
+            <!-- Top Illustration Banner matching Figma Exchange #1 -->
+            <ImageView
+                android:id="@+id/imgExchangeBanner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_exchange_illustration" />
+
+            <!-- "From" Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/from"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="12sp" />
+
+            <!-- "From" Input Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_figma_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/inputFromAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/amount_hint"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/figma_text_title"
+                    android:textColorHint="@color/figma_text_muted"
+                    android:textSize="15sp" />
+
+                <!-- Currency Selector Dropdown -->
+                <LinearLayout
+                    android:id="@+id/btnFromCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_tile_soft_blue"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textFromCurrencyCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="USD"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/ic_chevron_down"
+                        app:tint="@color/figma_primary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textFromBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-8dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="11sp" />
+
+            <!-- Center Swap Directional Arrows -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <FrameLayout
+                    android:id="@+id/btnSwapCurrencies"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:elevation="2dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_swap_arrows" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- "To" Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/to"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="12sp" />
+
+            <!-- "To" Input Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_figma_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/textToAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:hint="@string/amount_hint"
+                    android:textColor="@color/figma_text_title"
+                    android:textColorHint="@color/figma_text_muted"
+                    android:textSize="15sp" />
+
+                <!-- Currency Selector Dropdown -->
+                <LinearLayout
+                    android:id="@+id/btnToCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_tile_soft_blue"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textToCurrencyCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="IDR"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/ic_chevron_down"
+                        app:tint="@color/figma_primary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textToBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-8dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="11sp" />
+
+            <!-- Currency Rate Summary Line -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="28dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/currency_rate"
+                    android:textColor="@color/figma_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/textLiveRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="1 USD = 15.650 IDR"
+                    android:textColor="@color/figma_text_body"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textCurrencyHoldings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-18dp"
+                android:layout_marginBottom="18dp"
+                android:fontFamily="@font/poppins_regular"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+            <!-- Bottom Spacer to push button down if needed -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Exchange Action Button -->
+            <TextView
+                android:id="@+id/btnExchangeAction"
+                style="@style/FigmaButtonPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:text="@string/exchange_now"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

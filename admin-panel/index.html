@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTOMO BANK - Back-Office Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= LOGIN SCREEN ================= -->
+  <div id="loginContainer">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="login-brand-icon" id="loginBrandIcon"></div>
+        <div>
+          <div class="login-brand-title">UTOMO BANK</div>
+          <div class="login-brand-subtitle">Staff Back-Office Portal</div>
+        </div>
+      </div>
+
+      <div id="loginError" style="display:none; background:#FEE2E2; color:#B91C1C; padding:10px 14px; border-radius:6px; font-size:12px; margin-bottom:16px;"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Staff Email</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="staff@bankutomo.co.id" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" id="btnLoginSubmit" class="btn btn-primary" style="width:100%; padding:12px; margin-top:8px;">Sign In to Console</button>
+        <div style="margin-top:14px; padding:10px 12px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; font-size:11px; color:#64748B; text-align:center;">
+          Login Default: <strong>admin@bankutomo.co.id</strong> &bull; Password: <strong>[removed]</strong>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MAIN APP LAYOUT ================= -->
+  <div id="appContainer" style="display:none;">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-header-icon" id="sidebarBrandIcon"></div>
+        <div class="sidebar-header-text">
+          <h1>UTOMO BANK</h1>
+          <p>Back-Office v1.0</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Operations</div>
+        <div class="nav-item active" data-page="dashboard" id="nav-dashboard"></div>
+        <div class="nav-item" data-page="tickets" id="nav-tickets"></div>
+        <div class="nav-item" data-page="customers" id="nav-customers"></div>
+        <div class="nav-item" data-page="cards" id="nav-cards"></div>
+        <div class="nav-item" data-page="transactions" id="nav-transactions"></div>
+        <div class="nav-item" data-page="branches" id="nav-branches"></div>
+
+        <div class="nav-section-title">Administration</div>
+        <div class="nav-item" data-page="maintenance" id="nav-maintenance"></div>
+        <div class="nav-item" data-page="staff" id="nav-staff"></div>
+        <div class="nav-item" data-page="canned" id="nav-canned"></div>
+        <div class="nav-item" data-page="audit" id="nav-audit"></div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="userAvatar">U</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name" id="userName">Staff User</div>
+            <div class="sidebar-user-role" id="userRole">viewer</div>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btnSignOut" style="width:100%;">Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- MAIN BODY -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-title" id="pageTitle">Dashboard</div>
+        <div class="topbar-right">
+          <div class="session-badge" id="sessionTimerText">
+            <span>Session:</span>
+            <strong id="sessionCounter">30:00</strong>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btnRefreshPage" title="Refresh data"></button>
+        </div>
+      </header>
+
+      <main class="content-body" id="appContent">
+        <!-- Injected page views -->
+      </main>
+    </div>
+  </div>
+
+  <!-- ================= CONFIRMATION MODAL ================= -->
+  <div id="confirmModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="confirmModalTitle">Confirm Action</h3>
+        <button type="button" class="btn btn-secondary btn-sm" id="btnConfirmClose">X</button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmModalMessage" style="margin-bottom:16px; color:#475569; font-size:13px;"></p>
+        <div class="form-group" id="reasonGroup">
+          <label class="form-label" for="confirmReason">Reason (Required for Audit Trail) *</label>
+          <textarea id="confirmReason" class="form-textarea" rows="3" placeholder="Enter administrative justification..." required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnConfirmCancel">Cancel</button>
+        <button type="button" class="btn btn-danger" id="btnConfirmExecute">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= GENERIC MODAL ================= -->
+  <div id="genericModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 id="genericModalTitle">Modal</h3>
+        <button type="button" class="btn btn-secondary btn-sm" id="btnGenericClose">X</button>
+      </div>
+      <div class="modal-body" id="genericModalBody"></div>
+      <div class="modal-footer" id="genericModalFooter">
+        <button type="button" class="btn btn-secondary" id="btnGenericCancel">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js?v=real_customer_cards_20261014_4"></script>
+</body>
+</html>

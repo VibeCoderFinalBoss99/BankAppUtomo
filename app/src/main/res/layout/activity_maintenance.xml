@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@drawable/bg_screen_modern_mesh">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="28dp"
+        android:paddingEnd="28dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="36dp">
+
+        <!-- Status Tag / Badge -->
+        <LinearLayout
+            android:id="@+id/layoutMaintenanceTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_warning_chip"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_alert_triangle"
+                app:tint="@color/bank_orange"
+                android:contentDescription="404 Alert" />
+
+            <TextView
+                android:id="@+id/textMaintenanceTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/maintenance_tag_404"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/bank_orange" />
+        </LinearLayout>
+
+        <!-- Lottie 404 Maintenance Animation -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieMaintenanceAnim"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="16dp"
+            app:lottie_rawRes="@raw/anim_maintenance_404"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            tools:ignore="MissingClass" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/textMaintenanceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/maintenance_title_default"
+            android:textSize="22sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textStyle="bold"
+            android:textColor="@color/figma_text_title"
+            android:gravity="center"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Message Description Below Animation -->
+        <TextView
+            android:id="@+id/textMaintenanceMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maintenance_desc_default"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/figma_text_muted"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Optional Countdown Timer Card -->
+        <LinearLayout
+            android:id="@+id/layoutMaintenanceCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_figma_card"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/maintenance_ends_in"
+                android:textSize="11sp"
+                android:textColor="@color/figma_text_muted"
+                android:fontFamily="@font/poppins_semibold"
+                android:textStyle="bold"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:id="@+id/textMaintenanceCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00:00"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textStyle="bold"
+                android:textColor="@color/figma_primary"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Retry Button (Primary Action) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRetryMaintenance"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="@string/maintenance_try_again"
+            android:textSize="15sp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:cornerRadius="12dp"
+            android:backgroundTint="@color/figma_primary"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Customer Service Button (Secondary Action) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMaintenanceSupport"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="@string/maintenance_contact_support"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/figma_primary"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/figma_border"
+            app:strokeWidth="1.5dp"
+            app:icon="@drawable/ic_support_headset"
+            app:iconTint="@color/figma_primary"
+            app:iconGravity="textStart"
+            android:backgroundTint="@color/white" />
+
+    </LinearLayout>
+</ScrollView>

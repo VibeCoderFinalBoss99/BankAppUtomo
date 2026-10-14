@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="36dp"
+    android:paddingBottom="36dp">
+
+    <com.airbnb.lottie.LottieAnimationView
+        tools:ignore="MissingClass"
+        android:id="@+id/lottieEmptyAnimation"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/textEmptyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="No Transactions Yet"
+        android:textColor="@color/figma_text_title"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textEmptySubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:text="Transactions will appear here as soon as you make payments."
+        android:textColor="@color/figma_text_muted"
+        android:textSize="13sp" />
+</LinearLayout>

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:padding="6dp" />
+
+        <TextView
+            android:id="@+id/saveHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Save Online"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/btnHeaderNewSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="+ New"
+            android:textColor="@color/figma_primary"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- DASHBOARD (Save online #1) -->
+        <ScrollView
+            android:id="@+id/viewSaveDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Total Savings Summary Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_orange_wave"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:layout_marginBottom="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Total Online Savings"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/textTotalSavingsBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 45.000.000"
+                        android:textColor="@android:color/white"
+                        android:textSize="26sp"
+                        android:layout_marginTop="6dp" />
+
+                    <TextView
+                        android:id="@+id/textActiveGoalsSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="3 Active Goals • Up to 5.5% p.a. interest"
+                        android:textColor="#EEFFFFFF"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="My Saving Goals"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Dynamic Goals Container -->
+                <LinearLayout
+                    android:id="@+id/containerSavingGoals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <!-- Empty State -->
+                <LinearLayout
+                    android:id="@+id/layoutEmptyGoals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/ic_figma_piggy"
+                        app:tint="@color/figma_text_muted" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Belum Ada Tabungan"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="Mulai tabungan online pertama Anda sekarang dan dapatkan bunga hingga 5.5% p.a."
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Open New Savings Button -->
+                <TextView
+                    android:id="@+id/btnOpenNewSavings"
+                    style="@style/FigmaButtonPrimary"
+                    android:layout_marginTop="16dp"
+                    android:text="+ Create New Goal" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- CREATE NEW SAVINGS FLOW (Save online #2 to #5) -->
+        <ScrollView
+            android:id="@+id/viewCreateSaveFlow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Goal Name"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/inputGoalName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="e.g. Vacation to Japan"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Target Amount (IDR)"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/inputTargetAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_bold"
+                    android:hint="Rp 10.000.000"
+                    android:inputType="number"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Duration (Months)"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Duration chips -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/chipDuration3"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center"
+                        android:text="3 Mos"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/chipDuration6"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_figma_button_primary"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center"
+                        android:text="6 Mos"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/chipDuration12"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center"
+                        android:text="12 Mos"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/chipDuration24"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_figma_card"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center"
+                        android:text="24 Mos"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Calculated Monthly Debit Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tile_soft_blue"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Monthly Auto-Debit (calculated)"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textMonthlyDebitCalculated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 1.667.000 / month"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="18sp"
+                        android:layout_marginTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Debited every 25th • Interest 4.5% p.a."
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <!-- Checkbox Terms -->
+                <CheckBox
+                    android:id="@+id/cbAgreeTerms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="I agree to the Online Savings terms and automatic monthly debit schedule."
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="24dp" />
+
+                <TextView
+                    android:id="@+id/btnSubmitCreateGoal"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="Create Saving Goal" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- CELEBRATION SUCCESS (Save online #6) -->
+        <ScrollView
+            android:id="@+id/viewSaveSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_figma_piggy"
+                    android:background="@drawable/bg_tile_soft_orange"
+                    android:padding="12dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Goal Created!"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/textSuccessGoalName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Vacation to Japan"
+                    android:textColor="@color/figma_primary"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="24dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="28dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Target"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:id="@+id/textSuccessTarget"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Rp 10.000.000"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Duration"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:id="@+id/textSuccessDuration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="6 Months"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Interest Rate"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="4.5% p.a."
+                            android:textColor="@color/figma_secondary" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnDoneSave"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="Back to Savings Dashboard" />
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</LinearLayout>

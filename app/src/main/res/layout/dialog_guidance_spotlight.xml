@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/guidanceRootOverlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9081225">
+
+    <!-- The Animated Spotlight Highlight Rectangle -->
+    <View
+        android:id="@+id/viewSpotlightTarget"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_guidance_spotlight_border"
+        android:visibility="invisible" />
+
+    <!-- Tooltip Card Container (Dynamically positioned below or above target) -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardGuidanceTooltip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="12dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/figma_border"
+            app:cardBackgroundColor="@color/figma_surface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header Row: Badge & Skip -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/textStepBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_guidance_badge"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:paddingStart="12dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="4dp"
+                        android:text="Langkah 1 dari 4"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnStepSkip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/poppins_medium"
+                        android:padding="4dp"
+                        android:text="Lewati"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="13sp" />
+                </RelativeLayout>
+
+                <!-- Step Title -->
+                <TextView
+                    android:id="@+id/textStepTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Pantau Saldo &amp; Kartu Rekening"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="17sp" />
+
+                <!-- Step Description -->
+                <TextView
+                    android:id="@+id/textStepDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="18dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lineSpacingExtra="3dp"
+                    android:text="Ketuk kartu debit ini untuk memeriksa detail nomor kartu, CVV, riwayat transaksi, dan mengatur limit belanja Anda."
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp" />
+
+                <!-- Navigation Controls -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Indicator Dots for Steps -->
+                    <LinearLayout
+                        android:id="@+id/layoutTourDots"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/tourDot0"
+                            android:layout_width="16dp"
+                            android:layout_height="6dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/bg_figma_button_primary" />
+
+                        <View
+                            android:id="@+id/tourDot1"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/bg_onboarding_dot_inactive" />
+
+                        <View
+                            android:id="@+id/tourDot2"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/bg_onboarding_dot_inactive" />
+
+                        <View
+                            android:id="@+id/tourDot3"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:background="@drawable/bg_onboarding_dot_inactive" />
+                    </LinearLayout>
+
+                    <!-- Prev Button -->
+                    <TextView
+                        android:id="@+id/btnStepPrev"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_figma_tab_inactive"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp"
+                        android:text="Kembali"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <!-- Next / Finish Button -->
+                    <TextView
+                        android:id="@+id/btnStepNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_figma_button_primary"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:text="Lanjut"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+</FrameLayout>

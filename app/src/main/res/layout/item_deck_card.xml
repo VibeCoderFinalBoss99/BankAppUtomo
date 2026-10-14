@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp">
+
+    <!-- Card Body Container -->
+    <RelativeLayout
+        android:id="@+id/cardBodyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_card_gradient_purple_orange"
+        android:padding="20dp"
+        android:elevation="6dp">
+
+        <!-- Top Left: Saldo Tersedia & Balance -->
+        <LinearLayout
+            android:id="@+id/cardTopBalanceLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Saldo tersedia"
+                android:textColor="#CCFFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textDeckCardBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rp 24.500.000"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Top Right: Contactless Icon -->
+        <ImageView
+            android:id="@+id/iconDeckContactless"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_contactless"
+            app:tint="@android:color/white" />
+
+        <!-- Middle Left: EMV Chip Icon -->
+        <ImageView
+            android:id="@+id/iconDeckChip"
+            android:layout_width="36dp"
+            android:layout_height="26dp"
+            android:layout_below="@id/cardTopBalanceLayout"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_figma_chip" />
+
+        <!-- Middle: 16-Digit Card Number -->
+        <TextView
+            android:id="@+id/textDeckCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iconDeckChip"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0.12"
+            android:text="1234  5678  9000  0000"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <!-- Bottom Left: Cardholder Name & Expiry -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textDeckCardHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/sample_card_holder"
+                android:textColor="@android:color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textDeckCardExpiry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="12/28"
+                android:textColor="#E0FFFFFF"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Bottom Right: Network Logo (Mastercard / Visa) -->
+        <ImageView
+            android:id="@+id/iconDeckNetworkLogo"
+            android:layout_width="44dp"
+            android:layout_height="26dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_figma_mastercard" />
+
+        <!-- Blocked Status Overlay -->
+        <RelativeLayout
+            android:id="@+id/layoutDeckBlockedOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_card_blocked_overlay"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iconDeckLock"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_lock_closed" />
+
+            <TextView
+                android:id="@+id/textDeckBlockedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iconDeckLock"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="KARTU DIBLOKIR"
+                android:textColor="@color/bank_red"
+                android:textSize="13sp"
+                android:letterSpacing="0.08" />
+
+            <TextView
+                android:id="@+id/textDeckBlockedReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textDeckBlockedLabel"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#FEE2E2"
+                android:textSize="11sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

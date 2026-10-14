@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Blue Down Arrow -->
+    <path
+        android:fillColor="#0B57D0"
+        android:pathData="M8,4v11.17l-2.59,-2.58L4,14l5,5 5,-5 -1.41,-1.41L10,15.17V4H8z" />
+    <!-- Red Up Arrow -->
+    <path
+        android:fillColor="#E5484D"
+        android:pathData="M16,20V8.83l2.59,2.58L20,10l-5,-5 -5,5 1.41,1.41L14,8.83V20h2z" />
+</vector>

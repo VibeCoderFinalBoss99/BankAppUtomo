@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="4dp">
+
+    <!-- Staff Message (Left aligned) -->
+    <LinearLayout
+        android:id="@+id/containerStaffMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@drawable/bg_chat_bubble_incoming"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:layout_marginEnd="64dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textStaffSenderName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Staf Layanan UTOMO Bank"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/figma_primary"
+            android:layout_marginBottom="2dp" />
+
+        <TextView
+            android:id="@+id/textStaffMessageBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Halo! Kami sedang memverifikasi kendala Anda."
+            android:textSize="13sp"
+            android:textColor="@color/figma_text_title"
+            android:lineSpacingExtra="2dp" />
+
+        <TextView
+            android:id="@+id/textStaffMessageTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14:35"
+            android:textSize="10sp"
+            android:textColor="@color/figma_text_muted"
+            android:layout_gravity="end"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+    <!-- Customer Message (Right aligned) -->
+    <LinearLayout
+        android:id="@+id/containerCustomerMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="@drawable/bg_chat_bubble_outgoing"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
+        android:layout_marginStart="64dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textCustomerMessageBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kartu saya terblokir, mohon bantuan pembukaan blokir."
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="2dp" />
+
+        <TextView
+            android:id="@+id/textCustomerMessageTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14:32"
+            android:textSize="10sp"
+            android:textColor="#E0E7FF"
+            android:layout_gravity="end"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+</LinearLayout>

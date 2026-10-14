@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_screen_modern_mesh">
+
+    <!-- Top App Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:background="@color/figma_surface"
+        android:elevation="2dp">
+
+        <ImageView
+            android:id="@+id/btnTicketsBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            app:tint="@color/figma_text_title"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/support_tickets_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/figma_text_title"
+            android:layout_marginStart="8dp" />
+
+        <ImageView
+            android:id="@+id/btnCreateTicket"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_figma_document"
+            app:tint="@color/figma_primary"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/new_ticket_title" />
+    </LinearLayout>
+
+    <!-- Filter Tab Capsules -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tabTicketsAll"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/str_semua"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_figma_tab_active"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tabTicketsOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/ticket_status_open"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/figma_text_muted"
+                android:background="@drawable/bg_figma_tab_inactive"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tabTicketsProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/ticket_status_in_progress"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/figma_text_muted"
+                android:background="@drawable/bg_figma_tab_inactive"
+                android:gravity="center"
+                android:paddingHorizontal="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tabTicketsResolved"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/ticket_status_resolved"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/figma_text_muted"
+                android:background="@drawable/bg_figma_tab_inactive"
+                android:gravity="center"
+                android:paddingHorizontal="16dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Main Content: List or Empty State -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTickets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="80dp" />
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/layoutTicketsEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_tile_soft_blue"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_support_headset"
+                    app:tint="@color/figma_primary" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ticket_empty_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/figma_text_title"
+                android:gravity="center"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ticket_empty_desc"
+                android:textSize="13sp"
+                android:textColor="@color/figma_text_muted"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:layout_marginBottom="24dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEmptyCreateTicket"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Mulai Chat Customer Service"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                app:icon="@drawable/ic_support_headset"
+                app:iconTint="@color/white"
+                app:cornerRadius="10dp"
+                android:backgroundTint="@color/figma_primary" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Floating / Bottom Action Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/figma_surface"
+        android:elevation="6dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBottomNewTicket"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Mulai Chat Customer Service"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:icon="@drawable/ic_support_headset"
+            app:iconTint="@color/white"
+            app:cornerRadius="12dp"
+            android:backgroundTint="@color/figma_primary" />
+    </LinearLayout>
+
+</LinearLayout>

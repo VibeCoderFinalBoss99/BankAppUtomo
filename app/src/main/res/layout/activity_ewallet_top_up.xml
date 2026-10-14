@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:padding="6dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            app:tint="@color/figma_text_title"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/ewalletHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/ewallet_title"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="36dp">
+
+            <!-- 1. Select E-Wallet Provider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/ewallet_select_provider"
+                android:textColor="@color/figma_text_title"
+                android:textSize="14sp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- E-Wallet Horizontal Provider Selector -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="18dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- ShopeePay -->
+                    <LinearLayout
+                        android:id="@+id/btnProviderShopeePay"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:background="@drawable/bg_ewallet_selected"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_ewallet_shopeepay" />
+
+                        <TextView
+                            android:id="@+id/textProviderShopeePay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="ShopeePay"
+                            android:textColor="@color/figma_primary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- DANA -->
+                    <LinearLayout
+                        android:id="@+id/btnProviderDana"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_ewallet_dana" />
+
+                        <TextView
+                            android:id="@+id/textProviderDana"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="DANA"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- GoPay -->
+                    <LinearLayout
+                        android:id="@+id/btnProviderGopay"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_ewallet_gopay" />
+
+                        <TextView
+                            android:id="@+id/textProviderGopay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="GoPay"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- OVO -->
+                    <LinearLayout
+                        android:id="@+id/btnProviderOvo"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_ewallet_ovo" />
+
+                        <TextView
+                            android:id="@+id/textProviderOvo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="OVO"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- LinkAja -->
+                    <LinearLayout
+                        android:id="@+id/btnProviderLinkAja"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_ewallet_linkaja" />
+
+                        <TextView
+                            android:id="@+id/textProviderLinkAja"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="LinkAja"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 2. Phone Number / Account Input -->
+            <TextView
+                android:id="@+id/labelPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/ewallet_phone_label"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="13sp"
+                android:layout_marginBottom="8dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_figma_input"
+                android:layout_marginBottom="12dp">
+
+                <EditText
+                    android:id="@+id/inputPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/poppins_medium"
+                    android:hint="@string/ewallet_phone_hint"
+                    android:inputType="phone"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="48dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/btnPickContact"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="6dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_user"
+                    app:tint="@color/figma_primary" />
+            </RelativeLayout>
+
+            <!-- Quick Recent Numbers -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/mobile_recent_numbers"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/recentContact1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Push (08123456789)"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/recentContact2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Olivia (08567891234)"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="12sp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- 3. Nominal Selection Grid -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/ewallet_nominal_label"
+                android:textColor="@color/figma_text_title"
+                android:textSize="14sp"
+                android:layout_marginBottom="12dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins"
+                android:layout_marginBottom="20dp">
+
+                <!-- 20k -->
+                <LinearLayout
+                    android:id="@+id/cardNominal20"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textNominal20Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 20.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textNominal20Sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total: Rp 21.000"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- 50k -->
+                <LinearLayout
+                    android:id="@+id/cardNominal50"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textNominal50Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 50.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textNominal50Sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total: Rp 51.000"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- 100k (Selected by default) -->
+                <LinearLayout
+                    android:id="@+id/cardNominal100"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_figma_button_primary"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textNominal100Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 100.000"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textNominal100Sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total: Rp 101.000"
+                        android:textColor="#CCFFFFFF"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- 200k -->
+                <LinearLayout
+                    android:id="@+id/cardNominal200"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textNominal200Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 200.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textNominal200Sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total: Rp 201.000"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- 300k -->
+                <LinearLayout
+                    android:id="@+id/cardNominal300"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textNominal300Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 300.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textNominal300Sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total: Rp 301.000"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- 500k -->
+                <LinearLayout
+                    android:id="@+id/cardNominal500"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/textNominal500Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 500.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textNominal500Sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Total: Rp 501.000"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+            </GridLayout>
+
+            <!-- 4. Source Account & Fee Summary -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_figma_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/ewallet_source_account"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textSourceBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Saldo: Rp 24.500.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="#EFEFEF" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/ewallet_admin_fee"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Rp 1.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/ewallet_total_payment"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/textTotalPayment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 101.000"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 5. Continue to Payment Button Pinned at Bottom -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="16dp"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:id="@+id/btnContinuePayment"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_figma_button_primary"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="@string/ewallet_btn_continue"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+</LinearLayout>

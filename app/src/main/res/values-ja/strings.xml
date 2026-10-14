@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UTOMO Bank</string>
+    <string name="str_beranda">ホーム</string>
+    <string name="str_profil">プロフィール</string>
+    <string name="str_notifikasi">通知</string>
+    <string name="str_logout">ログアウト</string>
+    <string name="str_qris">QR決済</string>
+    <string name="back">戻る</string>
+
+    <!-- Navigation & Bottom Bar -->
+    <string name="nav_home">ホーム</string>
+    <string name="nav_history">履歴</string>
+    <string name="nav_message">メッセージ</string>
+    <string name="nav_setting">設定</string>
+    <string name="nav_exchange">為替両替</string>
+    <string name="nav_statistics">統計</string>
+    <string name="nav_language">言語</string>
+
+    <!-- Quick Categorize Menu -->
+    <string name="action_sent">送金</string>
+    <string name="action_receive">受取</string>
+    <string name="action_loan">ローン</string>
+    <string name="action_topup">チャージ</string>
+
+    <!-- 3x3 Action Tiles -->
+    <string name="action_account_card">口座とカード</string>
+    <string name="action_transfer">振込</string>
+    <string name="action_withdraw">出金</string>
+    <string name="action_mobile_prepaid">携帯チャージ</string>
+    <string name="action_pay_bill">公共料金</string>
+    <string name="action_save_online">定期預金</string>
+    <string name="action_credit_card">クレジットカード</string>
+    <string name="action_transaction_report">取引レポート</string>
+    <string name="action_beneficiary">受取人一覧</string>
+
+    <!-- Currency Exchange -->
+    <string name="title_currency_exchange">外貨両替</string>
+    <string name="desc_currency_exchange">リアルタイム多通貨両替 (USD, KRW, VND, IDR)</string>
+    <string name="btn_exchange">両替 →</string>
+
+    <!-- Recent Transactions & Quick History -->
+    <string name="title_recent_transactions">最近の取引</string>
+    <string name="btn_see_all">すべて見る</string>
+
+    <!-- Messages & Alerts -->
+    <string name="title_messages">メッセージ</string>
+    <string name="notification_detail_header">メッセージ</string>
+    <string name="tab_transactions">取引履歴</string>
+    <string name="tab_announcements">お知らせ</string>
+    <string name="title_customer_support">24時間サポート</string>
+    <string name="desc_customer_support">優先カスタマーサポート • チャット対応</string>
+    <string name="btn_read_all">既読にする</string>
+    <string name="btn_chat">チャット</string>
+
+    <!-- Settings & Profile -->
+    <string name="title_settings">設定</string>
+    <string name="section_account_security">アカウントとセキュリティ</string>
+    <string name="item_change_password">パスワード変更</string>
+    <string name="item_biometric_login">生体認証ログイン</string>
+    <string name="section_preferences">環境設定</string>
+    <string name="item_language">言語設定</string>
+    <string name="item_dark_mode">ダークモード</string>
+    <string name="section_support">サポート情報</string>
+    <string name="item_customer_care">カスタマーケア 24/7</string>
+    <string name="item_app_info">アプリ情報</string>
+    <string name="item_logout">ログアウト</string>
+
+    <!-- Statistics -->
+    <string name="total_expense">総支出</string>
+    <string name="total_income">総収入</string>
+    <string name="expense_breakdown">支出の内訳</string>
+
+    <!-- Language Selector -->
+    <string name="hint_search_language">言語を検索...</string>
+</resources>

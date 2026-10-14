@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/figma_bg"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:padding="6dp" />
+
+        <TextView
+            android:id="@+id/exchangeHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/exchange_rates_branches"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <!-- 3-Segment Tab Bar: Rates | Converter | Branch -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_figma_input"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/tabRates"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_figma_tab_active"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/exchange_rates"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tabConverter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/exchange_title"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tabBranches"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/exchange_branches"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TAB 1: EXCHANGE & INTEREST RATES (Frames 24 & 25) -->
+        <ScrollView
+            android:id="@+id/viewTabRates"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="24dp">
+
+                <!-- Foreign Currency Table Header -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/exchange_foreign_currency"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginBottom="20dp">
+
+                    <!-- Table Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/exchange_currency"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="end"
+                            android:text="@string/exchange_buy_idr"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="end"
+                            android:text="@string/exchange_sell_idr"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/figma_divider"
+                        android:layout_marginBottom="8dp" />
+
+                    <!-- USD -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="US USD"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="15.650"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="15.720"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- EUR -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="EU EUR"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="17.110"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="17.200"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- SGD -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="SG SGD"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="12.020"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="12.090"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- JPY -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="JP JPY (100)"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="10.510"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="10.580"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Deposit Interest Rates (Frame 25) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/exchange_deposit_rates"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/exchange_one_month"
+                            android:textColor="@color/figma_text_title" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="3.25% p.a."
+                            android:textColor="@color/figma_secondary" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/exchange_three_months"
+                            android:textColor="@color/figma_text_title" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="3.75% p.a."
+                            android:textColor="@color/figma_secondary" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/exchange_six_months"
+                            android:textColor="@color/figma_text_title" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="4.50% p.a."
+                            android:textColor="@color/figma_secondary" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/exchange_twelve_months"
+                            android:textColor="@color/figma_text_title" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="5.25% p.a."
+                            android:textColor="@color/figma_secondary" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- TAB 2: CURRENCY CONVERTER / SWAP (Frames 78 & 79: Exchange #1 & #2) -->
+        <ScrollView
+            android:id="@+id/viewTabConverter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/exchange_you_pay"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Pay Input Box -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:layout_marginBottom="16dp">
+
+                    <EditText
+                        android:id="@+id/inputExchangePay"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_bold"
+                        android:hint="100"
+                        android:inputType="numberDecimal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="90dp"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textCurrencyFrom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="14dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="US USD"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/exchange_you_receive"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Receive Output Box -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/textExchangeReceive"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins_bold"
+                        android:gravity="center_vertical"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="90dp"
+                        android:text="Rp 1.565.000"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="14dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="ID IDR"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <!-- Rate info pill -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tile_soft_blue"
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:layout_marginBottom="28dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/exchange_indicative_rate"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/exchange_transaction_fee"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnSubmitExchange"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/exchange_now_full" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- TAB 3: SEARCH FOR BRANCH & ATM (Interactive Real Map from Figma) -->
+        <LinearLayout
+            android:id="@+id/viewTabBranches"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Interactive Leaflet Real Map -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+                <WebView
+                    android:id="@+id/webViewTabBranchMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+
+                <!-- Re-center Map Floating Action Button -->
+                <ImageView
+                    android:id="@+id/btnTabRecenterMap"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:elevation="4dp"
+                    android:padding="9dp"
+                    android:src="@drawable/ic_figma_location_pin"
+                    android:contentDescription="Re-center Map"
+                    app:tint="@color/figma_primary" />
+            </RelativeLayout>
+
+            <!-- Bottom Branches Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="@drawable/bg_sheet_top_rounded"
+                android:elevation="8dp"
+                android:paddingTop="12dp">
+
+                <!-- Search Input Box (Matching Figma Image 2) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/figma_text_muted" />
+
+                    <EditText
+                        android:id="@+id/inputTabSearchBranch"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:background="@null"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Cari cabang atau ATM..."
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/figma_text_title"
+                        android:textColorHint="@color/figma_text_muted"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:id="@+id/btnTabClearSearch"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Clear"
+                        android:padding="3dp"
+                        android:src="@drawable/ic_close"
+                        android:visibility="gone"
+                        app:tint="@color/figma_text_muted" />
+                </LinearLayout>
+
+                <!-- Branch Recycler View -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTabBranches"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingBottom="20dp" />
+
+                <!-- Empty State -->
+                <LinearLayout
+                    android:id="@+id/layoutTabEmptyBranches"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/figma_text_muted" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Cabang tidak ditemukan"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</LinearLayout>

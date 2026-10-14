@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/bank_primary" />
+        </shape>
+    </item>
+    <item
+        android:bottom="28dp"
+        android:left="28dp"
+        android:right="28dp"
+        android:top="28dp">
+        <vector
+            android:width="72dp"
+            android:height="72dp"
+            android:viewportWidth="72"
+            android:viewportHeight="72">
+            <path
+                android:fillColor="@color/white"
+                android:pathData="M18,10H30V39C30,48 36,54 45,54C54,54 60,48 60,39V10H48V38C48,41.5 46,44 42.5,44C39,44 37,41.5 37,38V10H25V39C25,55 36,64 45,64C61,64 72,53 72,39V10H60V39C60,48 54,56 45,56C30,56 18,45 18,39V10Z" />
+        </vector>
+    </item>
+</layer-list>

@@ -1,0 +1,12 @@
+{
+  "name": "utomobank-backoffice-scripts",
+  "version": "1.0.0",
+  "description": "Administrative scripts for UTOMO Bank Back-Office setup",
+  "main": "set-staff-role.js",
+  "scripts": {
+    "set-role": "node set-staff-role.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.7.0"
+  }
+}

@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <group>
+        <clip-path android:pathData="M 24, 24 m -24, 0 a 24,24 0 1,0 48,0 a 24,24 0 1,0 -48,0" />
+        <!-- Top Red Stripe -->
+        <path
+            android:fillColor="#C60B1E"
+            android:pathData="M0,0 H48 V12 H0 Z" />
+        <!-- Middle Yellow Stripe -->
+        <path
+            android:fillColor="#FFC400"
+            android:pathData="M0,12 H48 V36 H0 Z" />
+        <!-- Bottom Red Stripe -->
+        <path
+            android:fillColor="#C60B1E"
+            android:pathData="M0,36 H48 V48 H0 Z" />
+        <!-- Spanish Emblem / Crown Shield on the left side of yellow stripe -->
+        <path
+            android:fillColor="#C60B1E"
+            android:pathData="M14,18 h8 v6 c0,4 -4,6 -4,6 c0,0 -4,-2 -4,-6 Z" />
+        <path
+            android:fillColor="#FFC400"
+            android:pathData="M16,20 h4 v4 c0,2 -2,3 -2,3 c0,0 -2,-1 -2,-3 Z" />
+        <path
+            android:fillColor="#800020"
+            android:pathData="M16,16 h4 v2 h-4 Z" />
+    </group>
+    <!-- Border -->
+    <path
+        android:strokeColor="#22000000"
+        android:strokeWidth="1"
+        android:pathData="M 24, 24 m -23.5, 0 a 23.5,23.5 0 1,0 47,0 a 23.5,23.5 0 1,0 -47,0" />
+</vector>

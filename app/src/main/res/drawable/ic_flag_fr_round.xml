@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <group>
+        <clip-path android:pathData="M 24, 24 m -24, 0 a 24,24 0 1,0 48,0 a 24,24 0 1,0 -48,0" />
+        <!-- Blue Left Stripe -->
+        <path
+            android:fillColor="#002654"
+            android:pathData="M0,0 H16 V48 H0 Z" />
+        <!-- White Middle Stripe -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M16,0 H32 V48 H16 Z" />
+        <!-- Red Right Stripe -->
+        <path
+            android:fillColor="#CE1126"
+            android:pathData="M32,0 H48 V48 H32 Z" />
+    </group>
+    <!-- Border -->
+    <path
+        android:strokeColor="#22000000"
+        android:strokeWidth="1"
+        android:pathData="M 24, 24 m -23.5, 0 a 23.5,23.5 0 1,0 47,0 a 23.5,23.5 0 1,0 -47,0" />
+</vector>

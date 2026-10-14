@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1.2dp"
+    app:strokeColor="@color/glass_card_stroke"
+    app:cardBackgroundColor="@color/figma_surface"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
+
+        <!-- Category Icon Badge -->
+        <FrameLayout
+            android:id="@+id/containerTxCategoryIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_tile_soft_blue">
+
+            <ImageView
+                android:id="@+id/imgTxCategoryIcon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_figma_sent"
+                app:tint="@color/figma_primary" />
+        </FrameLayout>
+
+        <!-- Title & Subtitle -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/layoutAmountCol"
+            android:layout_toEndOf="@id/containerTxCategoryIcon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textHistoryCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:maxLines="1"
+                android:text="PLN Postpaid"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13.5sp" />
+
+            <TextView
+                android:id="@+id/textHistoryCategoryAndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:maxLines="1"
+                android:text="Listrik PLN • 13 Okt 2026, 14:30"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Amount & Status Badge -->
+        <LinearLayout
+            android:id="@+id/layoutAmountCol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textHistoryAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:text="- Rp 287.500"
+                android:textColor="@color/figma_text_title"
+                android:textSize="13.5sp" />
+
+            <TextView
+                android:id="@+id/textHistoryStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Berhasil"
+                android:textColor="@color/bank_success"
+                android:textSize="10.5sp" />
+        </LinearLayout>
+
+        <!-- Hidden legacy views for backward-compatibility if referenced -->
+        <TextView
+            android:id="@+id/textHistoryMonth"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/textHistoryDate"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

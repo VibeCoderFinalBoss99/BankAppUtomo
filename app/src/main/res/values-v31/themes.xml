@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.BankAppUtomo" parent="Base.Theme.BankAppUtomo">
+        <item name="android:windowSplashScreenBackground">@color/white</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/utomo_logo_mark</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/white</item>
+    </style>
+</resources>

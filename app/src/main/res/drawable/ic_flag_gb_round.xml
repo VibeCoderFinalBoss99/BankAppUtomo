@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <group>
+        <clip-path android:pathData="M 24, 24 m -24, 0 a 24,24 0 1,0 48,0 a 24,24 0 1,0 -48,0" />
+        <!-- Blue Background -->
+        <path
+            android:fillColor="#012169"
+            android:pathData="M0,0 H48 V48 H0 Z" />
+        <!-- White Saltire -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,0 L48,48 M48,0 L0,48"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="10" />
+        <!-- Red Saltire -->
+        <path
+            android:fillColor="#C8102E"
+            android:pathData="M0,0 L48,48 M48,0 L0,48"
+            android:strokeColor="#C8102E"
+            android:strokeWidth="5" />
+        <!-- White Cross -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,19 H48 V29 H0 Z M19,0 H29 V48 H19 Z" />
+        <!-- Red Cross -->
+        <path
+            android:fillColor="#C8102E"
+            android:pathData="M0,21.5 H48 V26.5 H0 Z M21.5,0 H26.5 V48 H21.5 Z" />
+    </group>
+    <!-- Border -->
+    <path
+        android:strokeColor="#22000000"
+        android:strokeWidth="1"
+        android:pathData="M 24, 24 m -23.5, 0 a 23.5,23.5 0 1,0 47,0 a 23.5,23.5 0 1,0 -47,0" />
+</vector>

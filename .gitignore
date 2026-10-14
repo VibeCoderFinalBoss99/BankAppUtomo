@@ -1,0 +1,55 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+node_modules/
+serviceAccountKey*.json
+*serviceAccount*.json
+*-adminsdk-*.json
+scripts/service-account.json
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Local build, preview, and QA artifacts
+/.aapt2-final-*/
+/.docx-render-*/
+/.gradle-tmp/
+/.kotlin/
+/gradle/gradle-daemon-jvm.properties
+/__pycache__/
+/.codex-*
+*.apk
+*.aab
+*.hprof
+*.rar
+*.log
+~$*.docx
+
+# Root-level screenshots and temporary XML generated during UI inspection
+/*.png
+/*.jpg
+/*.jpeg
+/strings_temp.xml
+
+# Local documentation-generation helpers and one-off patch scripts
+/*.py
+/tools/
+
+# Prompt drafts are task inputs, not product documentation
+/figma-recreate-prompt*.md
+/backoffice-ai-prompt.md
+
+# Dependency and environment files
+/functions/node_modules/
+/admin-panel/node_modules/
+/.firebase/
+functions/.env*
+functions/.runtimeconfig.json

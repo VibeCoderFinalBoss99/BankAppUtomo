@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp"
+    app:strokeWidth="1.5dp"
+    app:strokeColor="@color/figma_border"
+    app:cardBackgroundColor="@color/figma_surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="24dp">
+
+        <!-- Icon Badge -->
+        <FrameLayout
+            android:id="@+id/dialogIconContainer"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_tile_soft_red">
+
+            <ImageView
+                android:id="@+id/dialogIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_bell"
+                app:tint="@color/bank_red" />
+        </FrameLayout>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/dialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Konfirmasi"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+
+        <!-- Message -->
+        <TextView
+            android:id="@+id/dialogMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:text="Apakah Anda yakin ingin melanjutkan tindakan ini?"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="13sp" />
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Negative Button -->
+            <TextView
+                android:id="@+id/btnDialogCancel"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_figma_button_secondary"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="Batal"
+                android:textColor="@color/figma_text_title"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Positive Button -->
+            <TextView
+                android:id="@+id/btnDialogConfirm"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_tile_soft_red"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="Ya, Lanjutkan"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <!-- Optional Neutral / Secondary Action Button (e.g. Reset) -->
+        <TextView
+            android:id="@+id/btnDialogNeutral"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="Tindakan Lain"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

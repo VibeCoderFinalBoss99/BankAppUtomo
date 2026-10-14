@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
+
+        <!-- Header: Avatar, Greeting, Notification Bell -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/homeAvatar"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/source_b_avatar"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            <TextView
+                android:id="@+id/homeWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/homeAvatar"
+                android:layout_marginStart="14dp"
+                android:layout_toEndOf="@id/homeAvatar"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/home_welcome_back"
+                android:textColor="@color/source_b_muted"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/homeGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/homeWelcome"
+                android:layout_marginStart="14dp"
+                android:layout_toEndOf="@id/homeAvatar"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/sample_card_holder"
+                android:textColor="@color/figma_text_title"
+                android:textSize="18sp" />
+
+            <!-- Search Button -->
+            <ImageView
+                android:id="@+id/btnHomeSearch"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_toStartOf="@id/btnHomeNotification"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="6dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_more"
+                app:tint="@color/figma_text_title"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- Notification Bell with Badge -->
+            <FrameLayout
+                android:id="@+id/btnHomeNotification"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_bell"
+                    app:tint="@color/figma_text_title" />
+
+                <!-- Red Badge Dot -->
+                <View
+                    android:id="@+id/homeNotificationBadge"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_tile_soft_red" />
+            </FrameLayout>
+        </RelativeLayout>
+
+        <!-- Semi-Transparent Luxury Glass Card -->
+        <!-- Stacked Card Deck Container (Picture 5 style) -->
+        <FrameLayout
+            android:id="@+id/homeDeckContainer"
+            android:layout_width="match_parent"
+            android:layout_height="235dp"
+            android:layout_marginBottom="6dp"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+
+        <!-- Card Deck Action Buttons Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnDeckAddCard"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_tile_soft_blue"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="+ Tambah Kartu"
+                android:textColor="@color/figma_primary"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/btnDeckToggleBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_tile_soft_orange"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Blokir / Buka"
+                android:textColor="@color/figma_warning"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/btnDeckDeleteCard"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_tile_soft_red"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Hapus"
+                android:textColor="@color/bank_red"
+                android:textSize="12sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <!-- Hidden old container for backward safety -->
+        <FrameLayout
+            android:id="@+id/homeCardContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/homeCardPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/homeNoCardsState"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="24dp"
+                android:text="@string/home_no_active_cards"
+                android:textColor="@color/figma_text_title"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_available_balance"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/homeDeckBalanceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/sample_card_balance"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <!-- Background Image Texture -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/figma_card_01" />
+
+                <!-- Semi-Transparent Frosted Tint Overlay -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:background="#2E0A122E" />
+
+                <!-- Card Content -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:padding="20dp">
+
+                    <!-- Top Row: Chip and Contactless -->
+                    <LinearLayout
+                        android:id="@+id/cardTopRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_figma_chip" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_contactless" />
+                    </LinearLayout>
+
+                    <!-- Card Number -->
+                    <TextView
+                        android:id="@+id/cardNumberText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardTopRow"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:letterSpacing="0.12"
+                        android:text="@string/home_sample_card_number"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+
+                    <!-- Balance Label & Value -->
+                    <TextView
+                        android:id="@+id/cardBalanceLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardNumberText"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/home_available_balance"
+                        android:textColor="#B0C4DE"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/cardBalanceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/cardBalanceLabel"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="Rp 24.500.000"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                    <!-- Bottom Details Row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/home_card_holder"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/cardHolderName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="@string/sample_card_holder"
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/home_expires"
+                                android:textColor="#88FFFFFF"
+                                android:textSize="9sp" />
+
+                            <TextView
+                                android:id="@+id/cardExpiryText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="@string/home_sample_expiry"
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/cardBrandLogo"
+                            android:layout_width="38dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_figma_mastercard" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </FrameLayout>
+
+        <!-- Quick Categorize Menu Container (Sent, Receive, Loan, Topup) -->
+        <!-- Quick Categorize Menu Container (Sent, Receive, Loan, Topup) - Glassmorphism -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardQuickMenuContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1.5dp"
+            app:strokeColor="@color/glass_card_stroke"
+            app:cardBackgroundColor="@color/glass_card_bg">
+
+            <LinearLayout
+                android:id="@+id/quickCategorizeMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:weightSum="4">
+
+            <!-- 1. Sent -->
+            <LinearLayout
+                android:id="@+id/btnQuickSent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/iconContainerQuickSent"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_tile_soft_blue">
+
+                    <ImageView
+                        android:id="@+id/staticIconQuickSent"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_figma_sent"
+                        app:tint="@color/figma_primary" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/action_sent"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 2. Receive -->
+            <LinearLayout
+                android:id="@+id/btnQuickReceive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/iconContainerQuickReceive"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_tile_soft_green">
+
+                    <ImageView
+                        android:id="@+id/staticIconQuickReceive"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_figma_received"
+                        app:tint="#27AE60" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/action_receive"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 3. Loan -->
+            <LinearLayout
+                android:id="@+id/btnQuickLoan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/iconContainerQuickLoan"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_tile_soft_orange">
+
+                    <ImageView
+                        android:id="@+id/staticIconQuickLoan"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_figma_loan"
+                        app:tint="#F2994A" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/action_loan"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 4. Topup -->
+            <LinearLayout
+                android:id="@+id/btnQuickTopup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/iconContainerQuickTopup"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/bg_tile_soft_purple">
+
+                    <ImageView
+                        android:id="@+id/staticIconQuickTopup"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_figma_topup"
+                        app:tint="#9B51E0" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/action_topup"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3x3 Grid of 9 Action Tiles in a Container Card - Glassmorphism -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardNineMenuContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1.5dp"
+            app:strokeColor="@color/glass_card_stroke"
+            app:cardBackgroundColor="@color/glass_card_bg">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="18dp"
+                android:paddingBottom="18dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:stretchColumns="0,1,2">
+
+            <!-- Row 1: Account and Card, Transfer, Withdraw -->
+            <TableRow android:layout_marginBottom="16dp">
+                <!-- 1. Account and Card -->
+                <LinearLayout
+                    android:id="@+id/btnTileAccountCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileAccountCard"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_blue">
+                        <ImageView
+                            android:id="@+id/staticIconTileAccountCard"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_wallet"
+                            app:tint="@color/figma_primary" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_account_card"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 2. Transfer -->
+                <LinearLayout
+                    android:id="@+id/btnTileTransfer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileTransfer"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_red">
+                        <ImageView
+                            android:id="@+id/staticIconTileTransfer"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_send"
+                            app:tint="@color/bank_red" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_transfer"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 3. Withdraw -->
+                <LinearLayout
+                    android:id="@+id/btnTileWithdraw"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileWithdraw"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_cyan">
+                        <ImageView
+                            android:id="@+id/staticIconTileWithdraw"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_figma_atm"
+                            app:tint="@color/bank_blue" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_withdraw"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </TableRow>
+
+            <!-- Row 2: Mobile prepaid, Pay the bill, Save online -->
+            <TableRow android:layout_marginBottom="16dp">
+                <!-- 4. Mobile prepaid -->
+                <LinearLayout
+                    android:id="@+id/btnTileMobilePrepaid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileMobilePrepaid"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_yellow">
+                        <ImageView
+                            android:id="@+id/staticIconTileMobilePrepaid"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_phone"
+                            app:tint="@color/bank_accent" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_mobile_prepaid"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 5. Pay the bill -->
+                <LinearLayout
+                    android:id="@+id/btnTilePayBill"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTilePayBill"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_green">
+                        <ImageView
+                            android:id="@+id/staticIconTilePayBill"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_bulb"
+                            app:tint="@color/bank_success" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_pay_bill"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 6. Save online -->
+                <LinearLayout
+                    android:id="@+id/btnTileSaveOnline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileSaveOnline"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_purple">
+                        <ImageView
+                            android:id="@+id/staticIconTileSaveOnline"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_figma_piggy"
+                            app:tint="@color/bank_purple" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_save_online"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </TableRow>
+
+            <!-- Row 3: Credit card, Transaction report, Beneficiary -->
+            <TableRow>
+                <!-- 7. Credit card -->
+                <LinearLayout
+                    android:id="@+id/btnTileCreditCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileCreditCard"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_yellow">
+                        <ImageView
+                            android:id="@+id/staticIconTileCreditCard"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_card"
+                            app:tint="@color/bank_accent" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_credit_card"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 8. Transaction report -->
+                <LinearLayout
+                    android:id="@+id/btnTileTransactionReport"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileTransactionReport"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_green">
+                        <ImageView
+                            android:id="@+id/staticIconTileTransactionReport"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_figma_report"
+                            app:tint="@color/bank_success" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_transaction_report"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 9. Beneficiary -->
+                <LinearLayout
+                    android:id="@+id/btnTileBeneficiary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <FrameLayout
+                        android:id="@+id/iconContainerTileBeneficiary"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_tile_soft_pink">
+                        <ImageView
+                            android:id="@+id/staticIconTileBeneficiary"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_figma_beneficiary"
+                            app:tint="#D946EF" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="@string/action_beneficiary"
+                        android:textColor="@color/figma_text_body"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </TableRow>
+            </TableLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Currency Exchange Feature Card (Figma Exchange #1 &amp; #2) -->
+        <!-- Currency Exchange Feature Card (Figma Exchange #1 &amp; #2) - Glassmorphism -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnHomeCurrencyExchange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1.5dp"
+            app:strokeColor="@color/glass_card_stroke"
+            app:cardBackgroundColor="@color/glass_card_bg"
+            android:clickable="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/ic_swap_arrows"
+                    android:background="@drawable/bg_tile_soft_blue"
+                    android:padding="10dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="14dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/title_currency_exchange"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/desc_currency_exchange"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/btn_exchange"
+                    android:textColor="@color/figma_primary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <!-- Quick History Section (Figma Home #2 Recent Transactions) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/title_recent_transactions"
+                android:textColor="@color/figma_text_title"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btnQuickHistorySeeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="4dp"
+                android:text="@string/btn_see_all"
+                android:textColor="@color/figma_primary"
+                android:textSize="13sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </RelativeLayout>
+
+        <!-- Container for last 3 transactions -->
+        <LinearLayout
+            android:id="@+id/containerQuickHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:orientation="vertical" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

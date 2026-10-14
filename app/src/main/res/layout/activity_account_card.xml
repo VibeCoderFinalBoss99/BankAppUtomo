@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!-- Top App Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/account_card_title"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/btnHeaderAddCard"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/figma_text_title"
+            android:textSize="24sp"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <!-- Toggle Tabs: [Account] | [Card] -->
+    <LinearLayout
+        android:id="@+id/accountCardTabs"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tabAccount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_tab_active"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/account_tab_account"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tabCard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_figma_tab_inactive"
+            android:gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/account_tab_card"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="24dp">
+
+            <!-- ACCOUNT VIEW (Account & card #1) -->
+            <LinearLayout
+                android:id="@+id/layoutAccountView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Avatar Profile -->
+                <LinearLayout
+                    android:id="@+id/layoutAccountProfileHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/accountAvatar"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/source_b_avatar"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+                    <TextView
+                        android:id="@+id/textAccountUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sample_card_holder"
+                        android:textColor="@color/figma_text_title"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!-- Account 1 Card -->
+                <LinearLayout
+                    android:id="@+id/cardAccount1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sample_account_one"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="15sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                        android:text="@string/sample_account_number_one"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/available_balance"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/textAccount1Balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                        android:text="@string/sample_balance_one"
+                            android:textColor="@color/figma_primary"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/branch_jakarta"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Account 2 Card -->
+                <LinearLayout
+                    android:id="@+id/cardAccount2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sample_account_two"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="15sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                        android:text="@string/sample_account_number_two"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/available_balance"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/textAccount2Balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                        android:text="@string/sample_balance_two"
+                            android:textColor="@color/figma_primary"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/branch_surabaya"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Account 3 Card -->
+                <LinearLayout
+                    android:id="@+id/cardAccount3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/sample_savings_account"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="15sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                        android:text="@string/sample_account_number_three"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/available_balance"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                        android:text="@string/sample_balance_three"
+                            android:textColor="@color/figma_primary"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/branch_jakarta"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <!-- Account Management Action Button -->
+                <TextView
+                    android:id="@+id/btnAccountManagement"
+                    style="@style/FigmaButtonSecondary"
+                    android:text="@string/account_management"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Currency Exchange Button -->
+                <TextView
+                    android:id="@+id/btnGoToExchange"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/currency_exchange"
+                    android:layout_marginBottom="16dp" />
+            </LinearLayout>
+
+            <!-- CARD VIEW (Account & card #2) -->
+            <LinearLayout
+                android:id="@+id/layoutCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <!-- Dynamic Cards Container: 100% consistent with Home Card Deck -->
+                <HorizontalScrollView
+                    android:id="@+id/scrollAccountCards"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="16dp"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/containerAccountCards"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/transactions_title"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:layout_marginBottom="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/transaction_apple_store"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:text="- Rp 95.000"
+                            android:textColor="@color/bank_red"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/figma_border" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/transaction_spotify"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:text="- Rp 129.000"
+                            android:textColor="@color/bank_red"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/figma_border" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/transaction_money_transfer"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:text="+ Rp 300.000"
+                            android:textColor="@color/bank_success"
+                            android:textSize="13sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardAccountSpendingLimit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/monthly_spending_limit"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/btnEditAccountSpendingLimit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/bg_tile_soft_blue"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="Atur Batas"
+                            android:textColor="@color/figma_primary"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/textAccountSpendingAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/account_spending_amount"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="12sp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressAccountSpending"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="12dp"
+                        android:max="100"
+                        android:progress="35"
+                        android:progressDrawable="@drawable/bg_progress_blue"
+                        style="?android:attr/progressBarStyleHorizontal" />
+                </LinearLayout>
+
+                <!-- Add Card Button -->
+                <TextView
+                    android:id="@+id/btnAddCard"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/add_card"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Credit Card Services Button -->
+                <TextView
+                    android:id="@+id/btnCreditCardServices"
+                    style="@style/FigmaButtonSecondary"
+                    android:text="@string/credit_card_services"
+                    android:layout_marginBottom="16dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/accountBottomNavContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="12dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/accountBottomNavigation"
+            style="@style/Widget.App.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:minHeight="68dp"
+            android:background="@color/white"
+            app:backgroundTint="@color/white"
+            app:itemIconTint="@color/color_bottom_nav_item"
+            app:itemTextColor="@color/color_bottom_nav_item"
+            app:itemActiveIndicatorStyle="@null"
+            app:labelVisibilityMode="labeled"
+            app:elevation="0dp"
+            app:paddingBottomSystemWindowInsets="false"
+            app:paddingTopSystemWindowInsets="false"
+            app:menu="@menu/bottom_nav_menu" />
+    </FrameLayout>
+    </LinearLayout>
+
+    <!-- Floating Central QRIS FAB (matching DashboardActivity) -->
+    <LinearLayout
+        android:id="@+id/fabQr"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/bg_qr_fab"
+        android:elevation="18dp"
+        android:translationZ="18dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_qr"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_qris"
+            android:textColor="@color/white"
+            android:textSize="8.5sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textStyle="bold"
+            android:layout_marginTop="1dp" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base Color -->
+    <item>
+        <color android:color="@color/figma_bg" />
+    </item>
+
+    <!-- Top Soft Ambient Radial Glow (Indigo Blue) -->
+    <item
+        android:top="-120dp"
+        android:right="-100dp"
+        android:width="360dp"
+        android:height="360dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="200dp"
+                android:startColor="#204285F4"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+    <!-- Top Left Soft Ambient Glow (Cyan Purple) -->
+    <item
+        android:top="-80dp"
+        android:left="-80dp"
+        android:width="280dp"
+        android:height="280dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="180dp"
+                android:startColor="#189B51E0"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+    <!-- Translucent Digital Earth / Dots Mesh watermark -->
+    <item
+        android:top="40dp"
+        android:gravity="top|center_horizontal">
+        <bitmap
+            android:src="@drawable/bg_earth_translucent"
+            android:gravity="top|center_horizontal"
+            android:alpha="0.25" />
+    </item>
+</layer-list>

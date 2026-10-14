@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/figma_bg"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:padding="6dp" />
+
+        <TextView
+            android:id="@+id/creditCardHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/credit_card_title"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- STEP 1: Statement Overview (Credit card #1) -->
+        <ScrollView
+            android:id="@+id/stepCreditCardStatement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Credit Card Banner -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/figma_card_variant_02">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/credit_card_name"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/credit_card_product"
+                            android:textColor="#FFE4B5"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/credit_card_balance"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/ic_figma_mastercard" />
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <!-- Statement Summary -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/credit_card_total_due"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/credit_card_balance"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/credit_card_minimum_payment"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/credit_card_minimum_amount"
+                            android:textColor="@color/figma_primary"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/credit_card_due_date"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/credit_card_due_date_value"
+                            android:textColor="@color/bank_red"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!-- Pay Button (Triggers Credit card #2) -->
+                <TextView
+                    android:id="@+id/btnGoToPayCreditCard"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/credit_card_pay"
+                    android:layout_marginBottom="12dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- STEP 2: Pay Form (Credit card #2) -->
+        <ScrollView
+            android:id="@+id/stepCreditCardPayForm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/select_source_account"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Source Account Selector -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/main_account"
+                        android:textColor="@color/figma_text_title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/source_account_balance"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/payment_amount"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Amount Input -->
+                <EditText
+                    android:id="@+id/inputCreditCardAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_bold"
+                    android:hint="Rp 0"
+                    android:inputType="number"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Continue to Confirm Button -->
+                <TextView
+                    android:id="@+id/btnSubmitCreditCardPay"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/confirm_payment" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- STEP 3: Confirm Summary (Credit card #3) -->
+        <ScrollView
+            android:id="@+id/stepCreditCardConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/confirm_transaction_information"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/from_account"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/credit_card_source_number"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/to_card"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/credit_card_target_number"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/amount_label"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:id="@+id/textConfirmAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/credit_card_balance"
+                            android:textColor="@color/figma_primary" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/fee_label"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/credit_card_fee_value"
+                            android:textColor="@color/bank_success" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!-- Enter PIN Button (Credit card #4) -->
+                <TextView
+                    android:id="@+id/btnPromptPin"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/enter_security_pin" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- STEP 4: PIN Entry Modal / Overlay (Credit card #4) -->
+        <LinearLayout
+            android:id="@+id/stepCreditCardPin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/figma_bg"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/enter_security_pin"
+                android:textColor="@color/figma_text_title"
+                android:textSize="20sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/pin_authorization_hint"
+                android:textColor="@color/figma_text_muted"
+                android:textSize="13sp"
+                android:layout_marginBottom="24dp" />
+
+            <EditText
+                android:id="@+id/inputPin"
+                android:layout_width="220dp"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_figma_input"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:hint="••••••"
+                android:inputType="numberPassword"
+                android:maxLength="6"
+                android:letterSpacing="0.3"
+                android:textColor="@color/figma_text_title"
+                android:textSize="22sp"
+                android:layout_marginBottom="24dp" />
+
+            <TextView
+                android:id="@+id/btnVerifyPin"
+                style="@style/FigmaButtonPrimary"
+                android:text="@string/verify_and_pay" />
+        </LinearLayout>
+
+        <!-- STEP 5: Success Receipt (Credit card #5) -->
+        <ScrollView
+            android:id="@+id/stepCreditCardSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Success Icon -->
+                <FrameLayout
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:background="@drawable/bg_tile_soft_green"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp">
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_figma_check" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/transaction_successfully"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/transaction_success_detail"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Success Details Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/amount_paid"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:id="@+id/textSuccessAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="@string/credit_card_balance"
+                            android:textColor="@color/bank_success"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/reference_number"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/credit_card_reference_value"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnDoneSuccess"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="@string/done" />
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</LinearLayout>

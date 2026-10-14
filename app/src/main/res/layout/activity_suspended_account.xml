@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="@drawable/bg_screen_modern_mesh">
+
+    <FrameLayout
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="@drawable/bg_tile_soft_red"
+        android:layout_marginBottom="28dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_alert_triangle"
+            app:tint="@color/bank_red" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textSuspendedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account_suspended_title"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/figma_text_title"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/textSuspendedMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/account_suspended_desc"
+        android:textSize="14sp"
+        android:textColor="@color/figma_text_muted"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/textSuspendedReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/bank_red"
+        android:background="@drawable/bg_tile_soft_red"
+        android:padding="12dp"
+        android:gravity="center"
+        android:layout_marginBottom="32dp"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSuspendedContactSupport"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="@string/card_contact_support"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@color/figma_primary"
+        android:layout_marginBottom="12dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSuspendedSignOut"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="@string/str_keluar_aplikasi"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/figma_text_muted"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@android:color/transparent"
+        app:strokeColor="@color/figma_border"
+        app:strokeWidth="1dp" />
+
+</LinearLayout>

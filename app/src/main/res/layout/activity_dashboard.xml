@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_screen_modern_mesh"
+        tools:context="com.example.bankapputomo.DashboardActivity"
+        tools:ignore="TooManyViews">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/dashboardSwipeRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:id="@+id/fragmentContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <FrameLayout
+                android:id="@+id/bottomNavContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:clipChildren="false"
+                android:elevation="12dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E5E7EB" />
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigation"
+                    style="@style/Widget.App.BottomNavigationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_gravity="top"
+                    android:minHeight="68dp"
+                    android:background="@color/white"
+                    app:backgroundTint="@color/white"
+                    app:itemIconTint="@color/color_bottom_nav_item"
+                    app:itemTextColor="@color/color_bottom_nav_item"
+                    app:itemActiveIndicatorStyle="@null"
+                    app:labelVisibilityMode="labeled"
+                    app:elevation="0dp"
+                    app:paddingBottomSystemWindowInsets="false"
+                    app:paddingTopSystemWindowInsets="false"
+                    app:menu="@menu/bottom_nav_menu" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fabQr"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/bg_qr_fab"
+            android:elevation="18dp"
+            android:translationZ="18dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+            
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_qr"
+                app:tint="@color/white" />
+                
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_qris"
+                android:textColor="@color/white"
+                android:textSize="8.5sp"
+                android:fontFamily="@font/poppins_bold"
+                android:textStyle="bold"
+                android:layout_marginTop="1dp" />
+        </LinearLayout>
+        
+    </FrameLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/bank_bg"
+        app:menu="@menu/nav_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

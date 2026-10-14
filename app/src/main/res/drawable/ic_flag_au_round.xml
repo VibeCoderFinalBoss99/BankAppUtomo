@@ -1,0 +1,64 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <group>
+        <clip-path android:pathData="M 24, 24 m -24, 0 a 24,24 0 1,0 48,0 a 24,24 0 1,0 -48,0" />
+        <!-- Blue Field -->
+        <path
+            android:fillColor="#001B69"
+            android:pathData="M0,0 H48 V48 H0 Z" />
+        <!-- Union Jack Canton in top left (0,0 to 24,24) -->
+        <!-- White Saltire -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,0 L24,24 M24,0 L0,24"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="5" />
+        <!-- Red Saltire -->
+        <path
+            android:fillColor="#E4002B"
+            android:pathData="M0,0 L24,24 M24,0 L0,24"
+            android:strokeColor="#E4002B"
+            android:strokeWidth="2.5" />
+        <!-- White Cross -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M0,9.5 H24 V14.5 H0 Z M9.5,0 H14.5 V24 H9.5 Z" />
+        <!-- Red Cross -->
+        <path
+            android:fillColor="#E4002B"
+            android:pathData="M0,10.75 H24 V13.25 H0 Z M10.75,0 H13.25 V24 H10.75 Z" />
+        <!-- Commonwealth Star (Lower Left) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 12,31 L 13.5,34 L 16.5,33.5 L 14.5,36 L 16,39 L 13,38 L 12,41 L 11,38 L 8,39 L 9.5,36 L 7.5,33.5 L 10.5,34 Z" />
+        <!-- Southern Cross Stars (Right Side) -->
+        <!-- Alpha Crucis (bottom) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 36,36 L 37,38 L 39,37 L 38,39 L 39,41 L 37,40 L 36,42 L 35,40 L 33,41 L 34,39 L 33,37 L 35,38 Z" />
+        <!-- Gamma Crucis (top) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 36,8 L 37,10 L 39,9 L 38,11 L 39,13 L 37,12 L 36,14 L 35,12 L 33,13 L 34,11 L 33,9 L 35,10 Z" />
+        <!-- Beta Crucis (left) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 29,20 L 30,22 L 32,21 L 31,23 L 32,25 L 30,24 L 29,26 L 28,24 L 26,25 L 27,23 L 26,21 L 28,22 Z" />
+        <!-- Delta Crucis (right) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 42,18 L 43,20 L 45,19 L 44,21 L 45,23 L 43,22 L 42,24 L 41,22 L 39,23 L 40,21 L 39,19 L 41,20 Z" />
+        <!-- Epsilon Crucis (small) -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M 38,26 L 38.6,27.5 L 40,27.5 L 38.8,28.5 L 39.2,30 L 38,29 L 36.8,30 L 37.2,28.5 L 36,27.5 L 37.4,27.5 Z" />
+    </group>
+    <!-- Border -->
+    <path
+        android:strokeColor="#22000000"
+        android:strokeWidth="1"
+        android:pathData="M 24, 24 m -23.5, 0 a 23.5,23.5 0 1,0 47,0 a 23.5,23.5 0 1,0 -47,0" />
+</vector>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilihan bahasa"
+        android:textColor="@color/bank_text"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Mau pakai bahasa apa?"
+        android:textColor="@color/bank_muted"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layoutDirection="rtl"
+            android:text="English"
+            android:textColor="@color/bank_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:buttonTint="@color/bank_primary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bank_line" />
+
+        <RadioButton
+            android:id="@+id/radioIndonesian"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layoutDirection="rtl"
+            android:text="Bahasa Indonesia"
+            android:textColor="@color/bank_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:buttonTint="@color/bank_primary" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnApplyLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/bank_primary"
+        android:text="Lanjut pakai Bahasa Indonesia"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+</LinearLayout>

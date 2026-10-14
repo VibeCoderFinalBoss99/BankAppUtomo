@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_bottom_sheet_handle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Ubah Tujuan Tabungan"
+        android:textColor="@color/figma_text_title"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nama Tujuan"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="13sp"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/inputEditGoalName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_figma_input"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Contoh: Beli Mobil"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/figma_text_title"
+        android:textColorHint="@color/figma_text_muted"
+        android:textSize="14sp"
+        android:layout_marginBottom="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Target Saldo (Rp)"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="13sp"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/inputEditGoalTarget"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_figma_input"
+        android:fontFamily="@font/poppins_semibold"
+        android:hint="Rp 10.000.000"
+        android:inputType="number"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/figma_text_title"
+        android:textColorHint="@color/figma_text_muted"
+        android:textSize="14sp"
+        android:layout_marginBottom="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Jangka Waktu (Bulan)"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="13sp"
+        android:layout_marginBottom="6dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/chipEditDuration3"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="3 Bln"
+            android:textColor="@color/figma_text_title"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/chipEditDuration6"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_button_primary"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="6 Bln"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/chipEditDuration12"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="12 Bln"
+            android:textColor="@color/figma_text_title"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/chipEditDuration24"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_figma_card"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="24 Bln"
+            android:textColor="@color/figma_text_title"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnSaveEditGoal"
+        style="@style/FigmaButtonPrimary"
+        android:text="Simpan Perubahan"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/btnCancelEditGoal"
+        style="@style/FigmaButtonSecondary"
+        android:text="Batal" />
+
+</LinearLayout>

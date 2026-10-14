@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Bottom Navigation Compact Measurements to prevent text/icon cropping -->
+    <dimen name="m3_bottom_nav_min_height" tools:override="true">68dp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">68dp</dimen>
+    <dimen name="design_bottom_navigation_margin" tools:override="true">4dp</dimen>
+    <dimen name="m3_bottom_nav_item_padding_top" tools:override="true">4dp</dimen>
+    <dimen name="m3_bottom_nav_item_padding_bottom" tools:override="true">4dp</dimen>
+    <dimen name="design_bottom_navigation_label_padding" tools:override="true">3dp</dimen>
+</resources>

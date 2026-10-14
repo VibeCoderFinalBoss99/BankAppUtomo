@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_bottom_sheet_handle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Edit Penerima"
+        android:textColor="@color/figma_text_title"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nama Lengkap"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="12sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/inputEditBenName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_figma_input"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Nama Penerima"
+        android:inputType="textPersonName"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/figma_text_title"
+        android:textColorHint="@color/figma_text_muted"
+        android:textSize="14sp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nama Bank"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="12sp"
+        android:layout_marginBottom="4dp" />
+
+    <RelativeLayout
+        android:id="@+id/btnSelectEditBank"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_figma_input"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/textEditSelectedBank"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/iconEditBankChevron"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/select_bank_prompt"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/iconEditBankChevron"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chevron_down"
+            app:tint="@color/figma_text_muted" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Nomor Rekening"
+        android:textColor="@color/figma_text_muted"
+        android:textSize="12sp"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/inputEditBenAccount"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_figma_input"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Nomor Rekening"
+        android:inputType="number"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/figma_text_title"
+        android:textColorHint="@color/figma_text_muted"
+        android:textSize="14sp"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/btnSaveEditBeneficiary"
+        style="@style/FigmaButtonPrimary"
+        android:text="Simpan Perubahan"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/btnCancelEditBeneficiary"
+        style="@style/FigmaButtonSecondary"
+        android:text="Batal" />
+
+</LinearLayout>

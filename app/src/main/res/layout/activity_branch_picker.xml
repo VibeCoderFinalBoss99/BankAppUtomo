@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <!-- Interactive Leaflet Real Map (CartoDB Positron Minimalist Gray) -->
+    <WebView
+        android:id="@+id/webViewBranchMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never" />
+
+    <!-- Top Floating Header Bar -->
+    <LinearLayout
+        android:id="@+id/topBarBranch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="12dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_figma_card"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:contentDescription="Back"
+            app:tint="@color/figma_text_title" />
+
+        <TextView
+            android:id="@+id/textHeaderTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Branch"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+
+        <!-- GPS Re-center Button -->
+        <ImageView
+            android:id="@+id/btnRecenterMap"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_figma_card"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_figma_location_pin"
+            android:contentDescription="Center Location"
+            app:tint="@color/figma_primary" />
+    </LinearLayout>
+
+    <!-- Bottom Sheet Container (Figma Minimalist White Card) -->
+    <LinearLayout
+        android:id="@+id/bottomSheetBranches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg_sheet_top_rounded"
+        android:elevation="16dp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="380dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <!-- Top Drag Handle -->
+        <View
+            android:id="@+id/sheetHandle"
+            android:layout_width="38dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_bottom_sheet_handle" />
+
+        <!-- Search Input Box (Matching Figma Image 2) -->
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_figma_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/figma_text_muted" />
+
+            <EditText
+                android:id="@+id/inputSearchBranch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="6dp"
+                android:background="@null"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Cari cabang atau ATM..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/figma_text_title"
+                android:textColorHint="@color/figma_text_muted"
+                android:textSize="13.5sp" />
+
+            <ImageView
+                android:id="@+id/btnClearSearch"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Clear"
+                android:padding="4dp"
+                android:src="@drawable/ic_close"
+                android:visibility="gone"
+                app:tint="@color/figma_text_muted" />
+        </LinearLayout>
+
+        <!-- Selected Branch Banner (when user taps a marker or item) -->
+        <LinearLayout
+            android:id="@+id/layoutSelectedAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_badge_soft_blue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textSelectedBranchPrompt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Pilih cabang ini untuk penarikan?"
+                android:textColor="@color/figma_primary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/btnConfirmSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_figma_button_primary"
+                android:fontFamily="@font/poppins_semibold"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:text="Pilih"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Branch List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerBranches"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingBottom="24dp"
+            tools:listitem="@layout/item_branch_figma" />
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/layoutEmptyState"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/figma_text_muted" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Cabang tidak ditemukan"
+                android:textColor="@color/figma_text_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Coba gunakan kata kunci pencarian nama jalan, mall, atau wilayah lain."
+                android:textColor="@color/figma_text_muted"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

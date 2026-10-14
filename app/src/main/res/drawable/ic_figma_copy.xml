@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/figma_primary"
+        android:pathData="M16,1 H4 C2.9,1 2,1.9 2,2 L2,16 H4 L4,3 L16,3 L16,1 Z M19,5 H8 C6.9,5 6,5.9 6,7 L6,21 C6,22.1 6.9,23 8,23 H19 C20.1,23 21,22.1 21,21 L21,7 C21,5.9 20.1,5 19,5 Z M19,21 H8 L8,7 H19 L19,21 Z" />
+</vector>

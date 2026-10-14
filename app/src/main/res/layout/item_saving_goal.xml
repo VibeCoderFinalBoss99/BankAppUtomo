@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_figma_card"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="12dp">
+
+    <!-- Top Title and Percentage -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/textGoalItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/textGoalItemPercentage"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Nama Tujuan"
+            android:textColor="@color/figma_text_title"
+            android:textSize="15sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/textGoalItemPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/poppins_bold"
+            android:text="50%"
+            android:textColor="@color/figma_primary"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressGoalItem"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:max="100"
+        android:progress="50"
+        android:progressTint="@color/figma_primary"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Current / Target & Duration Left -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:id="@+id/textGoalItemAmounts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Rp 5.000.000 / Rp 10.000.000"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textGoalItemDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/poppins_regular"
+            android:text="6 mos left"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <!-- Action Buttons Row (Top-up, Edit, Delete) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Top-up / Setor Saldo -->
+        <TextView
+            android:id="@+id/btnGoalTopUp"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_tile_soft_blue"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="+ Setor Dana"
+            android:textColor="@color/figma_primary"
+            android:textSize="12sp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Edit Goal -->
+        <ImageView
+            android:id="@+id/btnGoalEdit"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_tile_soft_green"
+            android:padding="7dp"
+            android:src="@drawable/ic_more"
+            app:tint="@color/bank_success"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Edit Goal" />
+
+        <!-- Delete Goal -->
+        <ImageView
+            android:id="@+id/btnGoalDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_tile_soft_red"
+            android:padding="7dp"
+            android:src="@drawable/ic_drop"
+            app:tint="@color/bank_red"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Delete Goal" />
+    </LinearLayout>
+
+</LinearLayout>

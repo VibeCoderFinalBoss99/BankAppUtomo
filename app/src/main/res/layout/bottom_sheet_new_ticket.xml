@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:padding="24dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_bottom_sheet_handle"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_ticket_title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/figma_text_title"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Category Selector -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ticket_category"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/figma_text_muted"
+        android:textAllCaps="true"
+        android:layout_marginBottom="6dp" />
+
+    <Spinner
+        android:id="@+id/spinnerTicketCategory"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_figma_input"
+        android:paddingHorizontal="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Subject Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ticket_subject"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/figma_text_muted"
+        android:textAllCaps="true"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/inputTicketSubject"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_figma_input"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/figma_text_title"
+        android:textSize="14sp"
+        android:hint="Contoh: Kendala kartu diblokir"
+        android:textColorHint="@color/figma_text_muted"
+        android:singleLine="true"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Message Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ticket_message"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/figma_text_muted"
+        android:textAllCaps="true"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/inputTicketMessage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="top|start"
+        android:background="@drawable/bg_figma_input"
+        android:padding="12dp"
+        android:textColor="@color/figma_text_title"
+        android:textSize="14sp"
+        android:hint="Jelaskan detail kendala Anda selengkap mungkin..."
+        android:textColorHint="@color/figma_text_muted"
+        android:layout_marginBottom="24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmitTicket"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="@string/str_kirim"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:cornerRadius="12dp"
+        android:backgroundTint="@color/figma_primary" />
+
+</LinearLayout>

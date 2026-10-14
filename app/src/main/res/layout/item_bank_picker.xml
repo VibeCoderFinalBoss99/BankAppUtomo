@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bankItemRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_bank_item_normal"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="14dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="14dp"
+    android:paddingBottom="12dp">
+
+    <!-- Bank Icon/Initials Badge -->
+    <TextView
+        android:id="@+id/textBankBadge"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="14dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="BCA"
+        android:textColor="@color/figma_primary"
+        android:textSize="13sp" />
+
+    <!-- Bank Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textBankName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="1"
+            android:text="Bank Central Asia (BCA)"
+            android:textColor="@color/figma_text_title"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textBankSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="1"
+            android:text="Bank Swasta • Transfer Instan"
+            android:textColor="@color/figma_text_muted"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Selection / Action Indicator (NO Radio Button!) -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <!-- Selected State Indicator: Blue Check Circle -->
+        <ImageView
+            android:id="@+id/imageCheckSelected"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/selected"
+            android:src="@drawable/ic_check_circle_blue"
+            android:visibility="gone" />
+
+        <!-- Normal State Indicator: Chevron Right -->
+        <ImageView
+            android:id="@+id/imageChevron"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="Select"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="@color/figma_text_muted"
+            android:visibility="visible" />
+    </FrameLayout>
+
+</LinearLayout>

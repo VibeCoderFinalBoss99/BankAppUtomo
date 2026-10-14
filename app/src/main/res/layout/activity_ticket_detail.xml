@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_screen_modern_mesh">
+
+    <!-- Header Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:background="@color/figma_surface"
+        android:elevation="2dp">
+
+        <ImageView
+            android:id="@+id/btnDetailBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_figma_arrow_back"
+            app:tint="@color/figma_text_title"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/textDetailSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail Tiket"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/figma_text_title"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:id="@+id/textDetailCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Masalah Kartu"
+                    android:textSize="11sp"
+                    android:textColor="@color/figma_text_muted" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" • "
+                    android:textSize="11sp"
+                    android:textColor="@color/figma_text_muted" />
+
+                <TextView
+                    android:id="@+id/textDetailStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terbuka"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/figma_primary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Ticket Actions: Close / Reopen / Rate -->
+        <TextView
+            android:id="@+id/btnDetailAction"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="@string/ticket_close_action"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/figma_primary"
+            android:background="@drawable/bg_tile_soft_blue"
+            android:gravity="center"
+            android:paddingHorizontal="12dp" />
+    </LinearLayout>
+
+    <!-- Rating Banner (if resolved and not yet rated) -->
+    <LinearLayout
+        android:id="@+id/layoutRatingPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_tile_soft_green"
+        android:padding="12dp"
+        android:layout_margin="12dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_star_filled" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiket ini telah diselesaikan"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/bank_success" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ketuk untuk memberikan penilaian 1-5 bintang."
+                android:textSize="11sp"
+                android:textColor="@color/figma_text_muted" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnOpenRatingSheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nilai"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/bank_success"
+            android:paddingHorizontal="8dp" />
+    </LinearLayout>
+
+    <!-- Chat Messages Scroll / RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerChatMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false" />
+
+    <!-- Message Input Bar -->
+    <LinearLayout
+        android:id="@+id/layoutInputBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="@color/figma_surface"
+        android:elevation="6dp">
+
+        <EditText
+            android:id="@+id/inputChatMessage"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_figma_input"
+            android:paddingHorizontal="16dp"
+            android:hint="@string/ticket_send_message_hint"
+            android:textColorHint="@color/figma_text_muted"
+            android:textColor="@color/figma_text_title"
+            android:textSize="14sp"
+            android:maxLines="3" />
+
+        <FrameLayout
+            android:id="@+id/btnSendMessage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_tile_soft_blue"
+            android:layout_marginStart="8dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_send_message"
+                app:tint="@color/figma_primary" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

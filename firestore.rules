@@ -1,0 +1,354 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==========================================
+    // HELPER FUNCTIONS & ROLE CHECKING
+    // ==========================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Supports accounts created by the earlier prototype, whose document ID
+    // was derived from email instead of Firebase Authentication UID.
+    function isUserOwner(uid) {
+      return isAuthenticated() && (
+        request.auth.uid == uid ||
+        (exists(/databases/$(database)/documents/users/$(uid)) &&
+          get(/databases/$(database)/documents/users/$(uid)).data.uid == request.auth.uid) ||
+        (exists(/databases/$(database)/documents/users/$(uid)) &&
+          get(/databases/$(database)/documents/users/$(uid)).data.email == request.auth.token.email)
+      );
+    }
+
+    function getRole() {
+      return request.auth.token.role;
+    }
+
+    function hasRole(r) {
+      return isAuthenticated() && ('role' in request.auth.token) && request.auth.token.role == r;
+    }
+
+    function isStaff() {
+      return isAuthenticated() && ('role' in request.auth.token) &&
+        request.auth.token.role in ['superadmin', 'support_agent', 'card_operator', 'viewer'];
+    }
+
+    function isSuperAdmin() {
+      return hasRole('superadmin');
+    }
+
+    function isSupportAgent() {
+      return hasRole('support_agent');
+    }
+
+    function isCardOperator() {
+      return hasRole('card_operator');
+    }
+
+    function isViewer() {
+      return hasRole('viewer');
+    }
+
+    function canManageTickets() {
+      return isSuperAdmin() || isSupportAgent();
+    }
+
+    function canManageCards() {
+      return isSuperAdmin() || isSupportAgent() || isCardOperator();
+    }
+
+    function canUnblockCard() {
+      return isSuperAdmin() || isCardOperator();
+    }
+
+    function canFlagTransaction() {
+      return isSuperAdmin() || isSupportAgent() || isCardOperator();
+    }
+
+    function canManageUsers() {
+      return isSuperAdmin();
+    }
+
+    function canManageMaintenance() {
+      return isSuperAdmin();
+    }
+
+    function canManageStaff() {
+      return isSuperAdmin();
+    }
+
+    function canManageCannedResponses() {
+      return isSuperAdmin();
+    }
+
+    function canViewAuditLog() {
+      return isSuperAdmin();
+    }
+
+    // ==========================================
+    // MAINTENANCE MODE CHECK
+    // ==========================================
+
+    function isMaintenanceDocExists() {
+      return exists(/databases/$(database)/documents/config/maintenance);
+    }
+
+    function getMaintenanceData() {
+      return get(/databases/$(database)/documents/config/maintenance).data;
+    }
+
+    function isMaintenanceActive() {
+      return isMaintenanceDocExists() &&
+        getMaintenanceData().enabled == true &&
+        (!('startsAt' in getMaintenanceData()) || request.time >= getMaintenanceData().startsAt) &&
+        (!('endsAt' in getMaintenanceData()) || request.time < getMaintenanceData().endsAt);
+    }
+
+    function isBypassed() {
+      return isAuthenticated() && exists(/databases/$(database)/documents/maintenance_bypass/$(request.auth.uid));
+    }
+
+    function appAllowed() {
+      return !isMaintenanceActive() || isStaff() || isBypassed();
+    }
+
+    // ==========================================
+    // CONFIG & MAINTENANCE
+    // ==========================================
+
+    match /config/maintenance {
+      allow read: if true; // Publicly readable for app status check
+      allow write: if canManageMaintenance();
+    }
+
+    match /maintenance_bypass/{uid} {
+      allow read: if isAuthenticated() && (request.auth.uid == uid || isStaff());
+      allow write: if canManageMaintenance();
+    }
+
+    // ==========================================
+    // USERS & CARDS
+    // ==========================================
+
+    match /users/{uid} {
+      allow read: if ((request.auth.uid == uid ||
+        resource.data.uid == request.auth.uid ||
+        resource.data.email == request.auth.token.email || isStaff()) && appAllowed();
+      
+      // Customer-owned data may be updated by the app. Privileged identity
+      // fields remain staff-only; balances are still validated by the app's
+      // transaction flow and are not writable by another user's UID.
+      allow update: if ((request.auth.uid == uid ||
+        resource.data.uid == request.auth.uid ||
+        resource.data.email == request.auth.token.email) && appAllowed() &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['status', 'role', 'uid', 'email', 'ktp', 'accountNumber']))
+        || canManageUsers();
+
+      allow create: if (request.auth.uid == uid && appAllowed() && (!('status' in request.resource.data) || request.resource.data.status == 'active'))
+        || canManageUsers();
+
+      allow delete: if false;
+
+      // User Cards subcollection
+      match /cards/{cardId} {
+        allow read: if (isUserOwner(uid) || isStaff()) && appAllowed();
+
+        // Customer card updates (freeze/unfreeze self only if not locked by staff)
+        allow update: if (
+          isUserOwner(uid) && appAllowed() &&
+          resource.data.lockedByStaff == false &&
+          request.resource.data.lockedByStaff == false &&
+          request.resource.data.status in ['active', 'frozen'] &&
+          resource.data.status != 'blocked' &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'statusReasonCode', 'statusChangedBy', 'statusChangedAt', 'isBlocked', 'onlineTransactionsEnabled', 'balance', 'userId', 'accountId'])
+        ) || (
+          // Staff block/freeze
+          canManageCards() && appAllowed() &&
+          request.resource.data.status in ['active', 'frozen', 'blocked'] &&
+          (resource.data.status != 'blocked' || canUnblockCard())
+        );
+
+        allow create: if (isUserOwner(uid) && appAllowed()) || canManageCards();
+        allow delete: if (isUserOwner(uid) && resource.data.lockedByStaff == false && appAllowed()) || canManageCards();
+      }
+
+      match /beneficiaries/{beneficiaryId} {
+        allow read, create, update, delete: if isUserOwner(uid) && appAllowed();
+      }
+
+      match /savingGoals/{goalId} {
+        allow read, create, update, delete: if isUserOwner(uid) && appAllowed();
+      }
+
+      // User in-app notifications
+      match /notifications/{notifId} {
+        allow read: if isUserOwner(uid) && appAllowed();
+        allow create: if (isStaff() || isUserOwner(uid)) && appAllowed();
+        allow update: if isUserOwner(uid) &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']) && appAllowed();
+        allow delete: if isUserOwner(uid) && appAllowed();
+      }
+    }
+
+    // Direct root cards collection support
+    match /cards/{cardId} {
+      allow read: if (isAuthenticated() && (
+        resource.data.userId == request.auth.uid ||
+        (('accountId' in resource.data) && isUserOwner(resource.data.accountId)) ||
+        isStaff()
+      )) && appAllowed();
+
+      allow update: if (
+        (request.auth.uid == resource.data.userId ||
+          (('accountId' in resource.data) && isUserOwner(resource.data.accountId))) && appAllowed() &&
+        resource.data.lockedByStaff == false &&
+        request.resource.data.lockedByStaff == false &&
+        request.resource.data.status in ['active', 'frozen'] &&
+        resource.data.status != 'blocked' &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'statusReasonCode', 'statusChangedBy', 'statusChangedAt', 'isBlocked', 'onlineTransactionsEnabled', 'balance', 'userId', 'accountId'])
+      ) || (
+        canManageCards() && appAllowed() &&
+        request.resource.data.status in ['active', 'frozen', 'blocked'] &&
+        (resource.data.status != 'blocked' || canUnblockCard())
+      );
+
+      allow create: if (isAuthenticated() && request.resource.data.userId == request.auth.uid && appAllowed()) || canManageCards();
+      allow delete: if (isAuthenticated() && (
+        resource.data.userId == request.auth.uid ||
+        (('accountId' in resource.data) && isUserOwner(resource.data.accountId))
+      ) && resource.data.lockedByStaff == false && appAllowed()) || canManageCards();
+    }
+
+    // ==========================================
+    // TRANSACTIONS (READ-ONLY FOR STAFF, NO EDIT/DELETE)
+    // ==========================================
+
+    match /transactions/{txId} {
+      allow read: if (isAuthenticated() && (
+        resource.data.userId == request.auth.uid ||
+        (('accountId' in resource.data) && isUserOwner(resource.data.accountId)) ||
+        isStaff()
+      )) && appAllowed();
+      
+      // Enforce card status: if transaction references a card, verify it is active
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid && appAllowed() &&
+        (!('cardId' in request.resource.data) || 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)/cards/$(request.resource.data.cardId)).data.status == 'active');
+
+      allow update, delete: if false; // Strict banking rule: transactions are immutable
+    }
+
+    // Transaction flags by staff
+    match /transaction_flags/{txId} {
+      allow read: if isStaff() && appAllowed();
+      allow create, update: if canFlagTransaction() && request.resource.data.flaggedBy == request.auth.uid && appAllowed();
+      allow delete: if false;
+    }
+
+    // Branch and ATM directory. Staff maintains it; authenticated customers
+    // only read it.
+    match /branches/{branchId} {
+      allow read: if isAuthenticated() && appAllowed();
+      allow create, update, delete: if isStaff() && appAllowed();
+    }
+
+    // ==========================================
+    // TICKETS & SUPPORT
+    // ==========================================
+
+    match /tickets/{ticketId} {
+      allow read: if (isAuthenticated() && (resource.data.userId == request.auth.uid || isStaff())) && appAllowed();
+
+      // Customer creates ticket for themselves
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid && appAllowed() &&
+        request.resource.data.status == 'open' &&
+        request.resource.data.subject is string &&
+        request.resource.data.subject.size() <= 200 &&
+        request.resource.data.priority in ['low', 'normal', 'high', 'urgent'];
+
+      // Update: Customer can close or reopen within 7 days, or submit rating on resolution
+      allow update: if (
+        request.auth.uid == resource.data.userId && appAllowed() &&
+        (
+          // Customer rating submission
+          (resource.data.status in ['resolved', 'closed'] &&
+           request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rating', 'updatedAt']) &&
+           request.resource.data.rating is int &&
+           request.resource.data.rating >= 1 && request.resource.data.rating <= 5) ||
+          // Customer close
+          (request.resource.data.status == 'closed' &&
+           request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])) ||
+          // Customer reopen within 7 days
+          (request.resource.data.status == 'open' &&
+           resource.data.status in ['resolved', 'closed'] &&
+           request.time < resource.data.updatedAt + duration.value(7, 'd') &&
+           request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt', 'unreadForStaff']))
+        )
+      ) || (
+        // Staff updates: status, priority, assignedTo, unread flags
+        canManageTickets() && appAllowed()
+      );
+
+      allow delete: if false;
+
+      // Messages subcollection
+      match /messages/{messageId} {
+        allow read: if (isAuthenticated() && (
+          get(/databases/$(database)/documents/tickets/$(ticketId)).data.userId == request.auth.uid || isStaff()
+        )) && appAllowed();
+
+        allow create: if (
+          // Customer sends message
+          (get(/databases/$(database)/documents/tickets/$(ticketId)).data.userId == request.auth.uid &&
+           request.resource.data.senderType == 'customer' &&
+           request.resource.data.senderId == request.auth.uid &&
+           request.resource.data.text is string &&
+           request.resource.data.text.size() <= 4000) ||
+          // Staff sends message
+          (canManageTickets() &&
+           request.resource.data.senderType == 'staff' &&
+           request.resource.data.senderId == request.auth.uid &&
+           request.resource.data.text is string &&
+           request.resource.data.text.size() <= 4000)
+        ) && appAllowed();
+
+        allow update, delete: if false;
+      }
+
+      // Internal Notes (Staff only! Customers can NEVER read or write)
+      match /internalNotes/{noteId} {
+        allow read, write: if canManageTickets() && appAllowed();
+      }
+    }
+
+    // ==========================================
+    // CANNED RESPONSES (STAFF READ, SUPERADMIN WRITE)
+    // ==========================================
+
+    match /cannedResponses/{responseId} {
+      allow read: if isStaff() && appAllowed();
+      allow write: if canManageCannedResponses() && appAllowed();
+    }
+
+    // ==========================================
+    // STAFF (STAFF READ, SUPERADMIN WRITE)
+    // ==========================================
+
+    match /staff/{staffUid} {
+      allow read: if isStaff() && appAllowed();
+      allow write: if canManageStaff() && appAllowed();
+    }
+
+    // ==========================================
+    // AUDIT LOG (APPEND-ONLY, NO UPDATES OR DELETES)
+    // ==========================================
+
+    match /audit_logs/{logId} {
+      allow read: if canViewAuditLog() && appAllowed();
+      allow create: if isStaff() && request.resource.data.actorUid == request.auth.uid && appAllowed();
+      allow update, delete: if false; // Append-only
+    }
+  }
+}

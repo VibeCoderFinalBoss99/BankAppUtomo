@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_screen_modern_mesh"
+    android:orientation="vertical">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_figma_arrow_back"
+            android:padding="6dp" />
+
+        <TextView
+            android:id="@+id/transferHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Transfer"
+            android:textColor="@color/figma_text_title"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- SCREEN: Transfer Main Form (Transfer #1, #2, #3, #4, #5, #6, #7, #8, #9) -->
+        <ScrollView
+            android:id="@+id/viewTransferForm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="24dp">
+
+                <!-- 1. Source Account (Transfer #7) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Choose account / card"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="6dp" />
+
+                <LinearLayout
+                    android:id="@+id/btnSelectSourceAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:layout_marginBottom="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="VISA **** **** **** 1234"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="▼"
+                            android:textColor="@color/figma_text_muted"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Available balance: Rp 12.500.000"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 2. Transfer Type Selection (Transfer #1: Card, Same Bank, Other Bank) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Choose transaction"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <!-- Type 1: E-Wallet -->
+                    <LinearLayout
+                        android:id="@+id/typeEWallet"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_wallet"
+                            app:tint="@color/figma_primary" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="E-Wallet"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Type 2: Same Bank (Transfer #2) -->
+                    <LinearLayout
+                        android:id="@+id/typeSameBank"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="3dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_user"
+                            app:tint="@color/figma_primary" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="Same\nbank"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Type 3: Other Bank (Transfer #3) -->
+                    <LinearLayout
+                        android:id="@+id/typeOtherBank"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_figma_card"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/ic_bank"
+                            app:tint="@color/figma_primary" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="Other\nbank"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 3. Choose Beneficiary -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Choose beneficiary"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/btnFindBeneficiary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Find beneficiary"
+                        android:textColor="@color/figma_primary"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <!-- Beneficiary Horizontal Avatars -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Add Beneficiary '+' -->
+                    <FrameLayout
+                        android:id="@+id/btnAddBeneficiaryQuick"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_figma_card">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="+"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="22sp" />
+                    </FrameLayout>
+
+                    <!-- Beneficiary 1: Emma -->
+                    <LinearLayout
+                        android:id="@+id/beneficiaryEmma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_emma"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Emma"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Beneficiary 2: Justin -->
+                    <LinearLayout
+                        android:id="@+id/beneficiaryJustin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_justin"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Justin"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Beneficiary 3: Olivia -->
+                    <LinearLayout
+                        android:id="@+id/beneficiaryOlivia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_olivia"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Olivia"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Beneficiary 4: Alexander -->
+                    <LinearLayout
+                        android:id="@+id/beneficiaryAlexander"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/avatar_alexander"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Alexander"
+                            android:textColor="@color/figma_text_title"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Input: Recipient Name -->
+                <EditText
+                    android:id="@+id/inputRecipientName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Recipient Name"
+                    android:inputType="textPersonName"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Select Bank Destination (for Other Bank transactions) -->
+                <RelativeLayout
+                    android:id="@+id/btnSelectBankDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/textSelectedBankDestination"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@+id/iconBankDestChevron"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/select_bank_prompt"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/iconBankDestChevron"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_chevron_down"
+                        app:tint="@color/figma_text_muted" />
+                </RelativeLayout>
+
+                <!-- Select E-Wallet Destination (for E-Wallet transactions) -->
+                <RelativeLayout
+                    android:id="@+id/btnSelectEWalletDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/imageSelectedEWalletLogo"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/textSelectedEWalletDestination"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/imageSelectedEWalletLogo"
+                        android:layout_toStartOf="@+id/iconEWalletDestChevron"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/ewallet_select_provider"
+                        android:textColor="@color/figma_text_muted"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/iconEWalletDestChevron"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_chevron_down"
+                        app:tint="@color/figma_text_muted" />
+                </RelativeLayout>
+
+                <!-- Input: Card / Account number -->
+                <EditText
+                    android:id="@+id/inputAccountNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Card or Account number"
+                    android:inputType="number"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Input: Amount (Transfer #5) -->
+                <EditText
+                    android:id="@+id/inputTransferAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_bold"
+                    android:hint="Rp 0"
+                    android:inputType="number"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Input: Content / Notes (Transfer #6) -->
+                <EditText
+                    android:id="@+id/inputTransferContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_figma_input"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Notes / Content (optional)"
+                    android:inputType="text"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="12dp" />
+
+
+                <!-- Checkbox: Save to directory of beneficiary -->
+                <CheckBox
+                    android:id="@+id/checkSaveBeneficiary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Save to directory of beneficiary"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Submit Button: Confirm (Triggers Transfer #5 - Confirm #1) -->
+                <TextView
+                    android:id="@+id/btnConfirmTransfer"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="Confirm" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- SUCCESS SCREEN: (Transfer #5 - Successfully) -->
+        <ScrollView
+            android:id="@+id/viewTransferSuccess"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Success Icon with Lottie Animation -->
+                <FrameLayout
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:background="@drawable/bg_tile_soft_green"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp">
+                    <com.airbnb.lottie.LottieAnimationView
+                        tools:ignore="MissingClass"
+                        android:id="@+id/lottieTransferSuccessAnim"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Transfer successfully!"
+                    android:textColor="@color/figma_text_title"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Your money has been transferred safely"
+                    android:textColor="@color/figma_text_muted"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Success Receipt Card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_figma_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="24dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Transferred Amount"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:id="@+id/textSuccessTransferAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Rp 1.000.000"
+                            android:textColor="@color/bank_success"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Recipient"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:id="@+id/textSuccessRecipient"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Amanda"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Transaction Code"
+                            android:textColor="@color/figma_text_muted" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="TX49281920"
+                            android:textColor="@color/figma_text_title" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnDoneTransfer"
+                    style="@style/FigmaButtonPrimary"
+                    android:text="Done" />
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</LinearLayout>
