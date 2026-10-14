@@ -27,16 +27,6 @@ import {
 import { httpsCallable } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-functions.js";
 
 // ========================================================
-// LOCAL ADMIN CREDENTIALS (Ubah email & password di sini)
-// ========================================================
-export const LOCAL_DEV_CREDENTIALS = {
-  email: 'admin@bankutomo.co.id',
-  password: '[removed]',
-  displayName: 'Administrator',
-  role: 'superadmin'
-};
-
-// ========================================================
 // TIMEOUT WRAPPER & DEFAULT ENTERPRISE DATASETS
 // Mencegah halaman hang/beku saat Firestore offline atau tidak terjangkau
 // ========================================================
@@ -361,22 +351,6 @@ function initAuth() {
     try {
       await signInWithEmailAndPassword(auth, email, pass);
     } catch (err) {
-      const isLocalDevAdmin = (email.toLowerCase() === LOCAL_DEV_CREDENTIALS.email.toLowerCase() && pass === LOCAL_DEV_CREDENTIALS.password);
-      const isAuthOffline = (err.message && (err.message.toLowerCase().includes('api-key') || err.message.toLowerCase().includes('api key') || err.message.includes('network') || err.message.includes('internal')));
-
-      if (isLocalDevAdmin || (email.toLowerCase() === LOCAL_DEV_CREDENTIALS.email.toLowerCase() && isAuthOffline)) {
-        console.info('Activating back-office session for:', email);
-        state.currentUser = { uid: 'demo-superadmin', email: LOCAL_DEV_CREDENTIALS.email, displayName: LOCAL_DEV_CREDENTIALS.displayName };
-        state.currentRole = LOCAL_DEV_CREDENTIALS.role;
-        document.getElementById('userName').textContent = LOCAL_DEV_CREDENTIALS.displayName;
-        document.getElementById('userRole').textContent = LOCAL_DEV_CREDENTIALS.role;
-        document.getElementById('userAvatar').textContent = LOCAL_DEV_CREDENTIALS.displayName.charAt(0);
-        document.getElementById('loginContainer').style.display = 'none';
-        document.getElementById('appContainer').style.display = 'flex';
-        startInactivityObserver();
-        navigateTo('dashboard');
-        return;
-      }
       errBox.textContent = `Sign in failed: ${err.message || 'Email atau password tidak sesuai.'}`;
       errBox.style.display = 'block';
       submitBtn.disabled = false;
